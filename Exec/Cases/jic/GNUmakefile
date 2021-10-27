@@ -25,6 +25,7 @@ USE_HIP         = FALSE
 Chemistry_Model = LiDryer
 # Chemistry_Model = LiDryer-noChem
 Eos_Model		= Fuego
+# Transport_Model = Constant
 Transport_Model = Simple
 
 include $(PELELMEX_HOME)/Utils/Make.PeleLMeX

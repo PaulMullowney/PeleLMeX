@@ -2,7 +2,7 @@
 geometry.is_periodic = 0 0 0               # For each dir, 0: non-perio, 1: periodic
 geometry.coord_sys   = 0                  # 0 => cart, 1 => RZ
 geometry.prob_lo     = 0.0 -0.0031 -0.0093        # x_lo y_lo (z_lo)
-geometry.prob_hi     = 0.0062 0.0031 0.00155        # x_hi y_hi (z_hi)
+geometry.prob_hi     = 0.0062 0.0031 0.0155        # x_hi y_hi (z_hi)
 
 # >>>>>>>>>>>>>  BC FLAGS <<<<<<<<<<<<<<<<
 # Interior, Inflow, Outflow, Symmetry,
@@ -12,26 +12,31 @@ peleLM.hi_bc = Inflow NoSlipWallAdiab Outflow
 
 
 #-------------------------AMR CONTROL----------------------------
-amr.n_cell          = 16 16 64      # Level 0 number of cells in each direction   
+amr.n_cell          = 32 32 128      # Level 0 number of cells in each direction   
 amr.v               = 1                # AMR verbose
 amr.max_level       = 2                # maximum level number allowed
 amr.ref_ratio       = 2 2 2 2          # refinement ratio
 amr.regrid_int      = 2                # how often to regrid
 amr.n_error_buf     = 2 2 2 2          # number of buffer cells in error est
 amr.grid_eff        = 0.7              # what constitutes an efficient grid
-amr.blocking_factor = 4               # block factor in grid generation (min box size)
+amr.blocking_factor = 8               # block factor in grid generation (min box size)
 amr.max_grid_size   = 64               # max box size
 
+#-------------------------
+# transport.const_viscosity = 0.0
+# transport.const_bulk_viscosity = 0.0 
+# transport.const_conductivity = 0.0
+# transport.const_diffusivity = 0.0 
 
 #--------------------------- Problem -------------------------------
 prob.P_mean = 2431800.0
-prob.V_in = 1.1e2
-prob.jet_rad = 2.5e-4
-prob.jet_temp = 5.5e2
-prob.global_eq_ratio = 3.5e-1
-prob.ox_temp = 7.5e2
-prob.XO2 = 2.1e-1
-prob.XN2 = 7.9e-1
+prob.V_in = 110
+prob.jet_rad = 0.00025
+prob.jet_temp = 550
+prob.global_eq_ratio = 0.35
+prob.ox_temp = 750
+prob.XO2 = 0.21
+prob.XN2 = 0.79
 prob.init_time = -1
 prob.pertmag_cf = 0.0
 prob.pertmag_jet = 0.0
@@ -39,7 +44,7 @@ prob.double_jet = 1
 prob.jet_dir = 0
 prob.cf_dir = 2
 prob.jet_purity = 0.995
-prob.bl_thickness = 1.0e-4
+prob.bl_thickness = 0.0001
 
 #-------------------------PeleLM CONTROL----------------------------
 peleLM.v = 3
@@ -49,12 +54,12 @@ peleLM.mu = 0.0
 peleLM.use_wbar = 1
 peleLM.sdc_iterMax = 1
 
-amr.plot_int = 10
-amr.max_step = 100
-amr.dt_shrink = 1e-4
+#amr.plot_int = 10
+amr.plot_per = 1e-5
+amr.max_step = 100000
+amr.dt_shrink = 1e-2
 #amr.init_dt = 1e-1
-amr.stop_time = 0.02
-#amr.stop_time = 1.00
+amr.stop_time = 5e-4
 amr.cfl = 0.7
 #amr.fixed_dt = 1e-3
 amr.derive_plot_vars = avg_pressure mag_vort mass_fractions
@@ -63,7 +68,7 @@ cvode.solve_type = dense               # CVODE Linear solve type (for Newton dir
 ode.analytical_jacobian = 0            # Provide analytical jacobian (from Fuego) 
 
 # --------------- INPUTS TO CHEMISTRY REACTOR ---------------
-peleLM.chem_integrator = "ReactorCvode"
+peleLM.chem_integrator = "ReactorNull"
 peleLM.use_typ_vals_chem = 1          # Use species/temp typical values in CVODE   
 ode.rtol = 1.0e-6                     # Relative tolerance of the chemical solve
 ode.atol = 1.0e-5                     # Absolute tolerance factor applied on typical values
