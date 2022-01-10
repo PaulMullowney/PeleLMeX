@@ -11,7 +11,7 @@ DIM             = 3
 DEBUG           = FALSE
 PRECISION       = DOUBLE
 VERBOSE         = FALSE
-TINY_PROFILE    = TRUE
+TINY_PROFILE    = FALSE
 
 # Compilation
 COMP            = clang
