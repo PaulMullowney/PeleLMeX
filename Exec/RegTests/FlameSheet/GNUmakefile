@@ -11,7 +11,7 @@ DIM             = 3
 DEBUG           = FALSE
 PRECISION       = DOUBLE
 VERBOSE         = FALSE
-TINY_PROFILE    = FALSE
+TINY_PROFILE    = TRUE
 
 # Compilation
 COMP            = clang
@@ -22,6 +22,7 @@ USE_HIP         = TRUE
 
 # PeleLMeX
 USE_EFIELD      = FALSE
+PELE_USE_MAGMA  = FALSE
 
 # PelePhysics
 Chemistry_Model = dodecane_lu
