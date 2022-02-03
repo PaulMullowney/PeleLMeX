@@ -1,4 +1,4 @@
-#----------------------DOMAIN DEFINITION------------------------
+# ----------------------DOMAIN DEFINITION------------------------
 geometry.is_periodic = 0 0 0               # For each dir, 0: non-perio, 1: periodic
 geometry.coord_sys   = 0                  # 0 => cart, 1 => RZ
 geometry.prob_lo     = -0.013 -0.013 -0.008        # x_lo y_lo (z_lo)
@@ -12,7 +12,7 @@ peleLM.hi_bc = NoSlipWallAdiab NoSlipWallAdiab NoSlipWallAdiab
 
 
 #-------------------------AMR CONTROL----------------------------
-amr.n_cell          = 64 64 32      # Level 0 number of cells in each direction   
+amr.n_cell          = 512 512 256      # Level 0 number of cells in each direction   
 amr.v               = 1                # AMR verbose
 amr.max_level       = 0                # maximum level number allowed
 amr.ref_ratio       = 2 2 2 2 2         # refinement ratio
@@ -36,16 +36,16 @@ peleLM.use_wbar = 1
 peleLM.sdc_iterMax = 1
 peleLM.floor_species = 0
 peleLM.num_divu_iter = 1
-peleLM.num_init_iter = 3
+peleLM.num_init_iter = 1
 
 peleLM.do_temporals = 1
 peleLM.temporal_int = 2
 peleLM.mass_balance = 1
 
 #amr.restart = chk00005
-amr.check_int = 5
-amr.plot_int = 10
-amr.max_step = 5
+amr.check_int = -1000
+amr.plot_int = -1000
+amr.max_step = 100
 amr.dt_shrink = 0.1
 amr.stop_time = 1.0
 #amr.stop_time = 1.00
@@ -62,7 +62,7 @@ cvode.max_order  = 4                  # CVODE max BDF order.
 
 #------------------------- EB SETUP -----------------------------
 eb2.geom_type = UserDefined
-eb2.small_volfrac = 1.e-2
+eb2.small_volfrac = 1.88e-3
 
 #------------  INPUTS TO CONSTANT TRANSPORT -----------------
 transport.const_viscosity        = 0.0002
@@ -83,32 +83,50 @@ transport.const_diffusivity      = 0.0
 
 #--------------------LINEAR SOLVER CONTROL------------------------
 nodal_proj.verbose = 2
-nodal_proj.mg_max_coarsening_level = 1
-#nodal_proj.bottom_rtol = 1.0e-13
-#nodal_proj.bottom_atol = 1.0e-13
+nodal_proj.mg_max_coarsening_level = 0
+nodal_proj.bottom_rtol = 1.0e-11
+nodal_proj.bottom_atol = 1.0e-11
 nodal_proj.bottom_solver = "hypre"
-nodal_proj.bottom_verbose = 0
-nodal_proj.hypre_namespace = nodal_proj.hypre
-nodal_proj.hypre.verbose = 0
-nodal_proj.hypre.hypre_solver = GMRES
-nodal_proj.hypre.hypre_preconditioner = BoomerAMG
-nodal_proj.hypre.bamg_verbose = 0
-nodal_proj.hypre.num_krylov = 100
-nodal_proj.hypre.bamg_coarsen_type = 10
-nodal_proj.hypre.bamg_interp_type = 6
-nodal_proj.hypre.bamg_relax_type = 3
-nodal_proj.hypre.bamg_num_sweeps = 5
-nodal_proj.hypre.bamg_cycle_type = 1
-nodal_proj.hypre.bamg_relax_order = 0
-nodal_proj.hypre.bamg_trunc_factor = 0.25
-nodal_proj.hypre.bamg_max_levels = 10
-nodal_proj.hypre.bamg_pmax_elmts = 4
-nodal_proj.hypre.bamg_keep_transpose = 1
-nodal_proj.hypre.bamg_strong_threshold = .57
-nodal_proj.hypre.recompute_preconditioner = 1
-nodal_proj.hypre.write_matrix_files = 0
-nodal_proj.hypre.overwrite_existing_matrix_files = 0
-nodal_proj.hypre.adjust_singular_matrix = 1
+nodal_proj.bottom_verbose = 2
+
+hypre.verbose = 0
+hypre.hypre_solver = GMRES
+hypre.hypre_preconditioner = BoomerAMG
+hypre.num_krylov = 200
+hypre.max_iterations = 200
+
+hypre.bamg_verbose = 0
+hypre.bamg_coarsen_type = 8
+hypre.bamg_interp_type = 6
+hypre.bamg_relax_type = 11
+hypre.bamg_num_sweeps = 2
+hypre.bamg_cycle_type = 1
+hypre.bamg_relax_order = 0
+hypre.bamg_keep_transpose = 1
+hypre.bamg_trunc_factor = 0.44351885396256086
+hypre.bamg_strong_threshold = 0.30015419030906665
+hypre.bamg_pmax_elmts = 4
+#hypre.bamg_max_levels = 6
+
+hypre.bamg_agg_num_levels = 3
+hypre.bamg_agg_interp_type = 5
+hypre.bamg_agg_pmax_elmts = 5
+
+hypre.bamg_smooth_type = 5
+hypre.bamg_smooth_num_sweeps = 1
+hypre.bamg_smooth_num_levels = 1
+hypre.bamg_ilu_type = 0
+hypre.bamg_ilu_level = 0
+hypre.bamg_ilu_max_iter = 1
+hypre.bamg_ilu_reordering_type = 0
+hypre.bamg_ilu_tri_solve = 0
+hypre.bamg_ilu_lower_jacobi_iters = 13
+hypre.bamg_ilu_upper_jacobi_iters = 5
+
+hypre.recompute_preconditioner = 0
+hypre.write_matrix_files = 0
+hypre.overwrite_existing_matrix_files = 0
+hypre.adjust_singular_matrix = 1
 
 fabarray.mfiter_tile_size = 1024 1024 1024
 
