@@ -20,7 +20,7 @@ export MPI_HOME=/opt/cray/pe/mpich/8.1.28/ofi/crayclang/17.0/
 export HIP_PLATFORM=amd
 
 #make TPLrealclean
-#make -j1 VERBOSE=1 TPL
+#make -j32 VERBOSE=1 TPL
 
 #make realclean
 make -j32 VERBOSE=1
