@@ -109,10 +109,12 @@ IO parameters
 
     #--------------------------IO CONTROL--------------------------
     amr.plot_int         = 20              # [OPT, DEF=-1] Frequency (as step #) for writing plot file
+    amr.plot_overwrite   = false           # [OPT, DEF=false] Overwrite plot files with same name if present
     amr.plot_per         = 0.002           # [OPT, DEF=-1] Period (time in s) for writing plot file
     amr.plot_per_exact   = 1               # [OPT, DEF=0] Flag to enforce exactly plt_per by shortening dt
     amr.plot_file        = "plt_"          # [OPT, DEF="plt_"] Plot file prefix
     amr.check_int        = 100             # [OPT, DEF=-1] Frequency (as step #) for writing checkpoint file
+    amr.check_overwrite  = false           # [OPT, DEF=false] Overwrite checkpoint files with same name if present
     amr.check_per        = 0.05            # [OPT, DEF=-1] Period (time in s) for writing checkpoint file
     amr.check_file       = "chk"           # [OPT, DEF="chk"] Checkpoint file prefix
     amr.file_stepDigits  = 6               # [OPT, DEF=5] Number of digits when adding nsteps to plt and chk names
@@ -121,9 +123,11 @@ IO parameters
 
     amr.restart          = chk00100        # [OPT, DEF=""] Checkpoint from which to restart the simulation
     amr.initDataPlt      = plt01000        # [OPT, DEF=""] Provide a plotfile from which to extract initial data
+    peleLM.initDataPlt_reset_time = 1               # [OPT, DEF=1] Resets time and nsteps to 0 after restarting from a plot file. (Warning: plot file will be rewritten if not renamed and argument value = 0)
+    peleLM.initDataPlt_patch_flow_variables = false # [OPT, DEF=false] Enable user-defined flow variable patching after reading a plot solution file
     amr.regrid_on_restart = 1              # [OPT, DEF="0"] Trigger a regrid after the data from checkpoint are loaded
     amr.n_files          = 64              # [OPT, DEF="min(256,NProcs)"] Number of files to write per level
-    
+
 Refinement controls
 -------------------
 
@@ -242,6 +246,8 @@ PeleLMeX algorithm
     peleLM.num_divu_iter = 1               # [OPT, DEF=1] Number of divU iterations to get initial dt estimate
     peleLM.do_init_proj = 1                # [OPT, DEF=1] Control over initial projection
     peleLM.advection_scheme = Godunov_BDS  # [OPT, DEF=Godunov_PLM] Advection scheme: Godunov_PLM, Godunov_PPM or Godunov_BDS
+    peleLM.chi_correction_type = DivuFirstIter  # [OPT, DEF=DivuEveryIter] When to compute divu for MAC proj divu constraint [DivuEveryIter, DivuFirstIter, NoDivu]
+    peleLM.print_chi_convergence = 1            # [OPT, DEF=(peleLM.v > 1)] Boolean flag on whether to print size of chi correction on each SDC iter
     peleLM.incompressible = 0              # [OPT, DEF=0] Enable to run fully incompressible, scalar advance is bypassed
     peleLM.m_rho = 1.17                    # [OPT, DEF=-1] If incompressible, density value [MKS]
     peleLM.m_mu = 1.8e-5                   # [OPT, DEF=-1] If incompressible, kinematic visc. value [MKS]
@@ -256,8 +262,19 @@ PeleLMeX algorithm
     peleLM.deltaT_tol = 1e-10              # [OPT, DEF=1.e-10] Tolerance of the deltaT solve
     peleLM.evaluate_vars =...              # [OPT, DEF=""] In evaluate mode, list unitTest: diffTerm, divU, instRR, transportCC
 
-Transport coeffs and LES
-------------------------
+    peleLM.spark_verbose = 0               # [OPT, DEF=0] Verbosity of spark ignition
+    peleLM.sparks = spark1 spark2 ...      # [OPT] List of spark names - multiple can be given
+    peleLM.spark1.location = 0.0 0.0 0.0   # [OPT] Spark location (in x,y,z coordinates) [m]
+    peleLM.spark1.temp = 2000.0            # [OPT] Temperature of the spark [K]
+    peleLM.spark1.radius = 1e-3            # [OPT] Radius of the spark [m]
+    peleLM.spark1.duration = 1e-3          # [OPT] Duration of the spark [s]
+    peleLM.spark1.time = 1e-2              # [OPT] Time when spark starts [s]
+
+    peleLM.user_defined_ext_sources = 0    # [OPT, DEF=0] Enable user defined source terms. Requires local ProblemSpecificFunctions.cpp.
+    
+    
+Transport coefficients and LES
+------------------------------
 
 ::
 
@@ -291,6 +308,9 @@ Chemistry integrator
     cvode.max_substeps = 10000                  # [OPT, DEF=10000] Maximum number of substeps for the linear solver in CVODE
 
 Note that the last five parameters belong to the Reactor class of PelePhysics but are specified here for completeness. In particular, CVODE is the adequate choice of integrator to tackle PeleLMeX large time step sizes. Several linear solvers are available depending on whether or not GPU are employed: on CPU, `dense_direct` is a finite-difference direct solver, `denseAJ_direct` is an analytical-jacobian direct solver (preferred choice), `sparse_direct` is an analytical-jacobian sparse direct solver based on the KLU library and `GMRES` is a matrix-free iterative solver; on GPU `GMRES` is a matrix-free iterative solver (available on all the platforms), `sparse_direct` is a batched block-sparse direct solve based on NVIDIA's cuSparse (only with CUDA), `magma_direct` is a batched block-dense direct solve based on the MAGMA library (available with CUDA and HIP. Different `cvode.solve_type` should be tried before increasing the `cvode.max_substeps`.
+
+.. note::
+   The default chemistry integrator is 'ReactorNull' which do not include the chemical source terms.
 
 Embedded Geometry
 -----------------
@@ -339,6 +359,27 @@ that fine-grid patches do not cross the EB boundary. The last parameter set a sa
 how far the derefinement is applied in order to account for grid-patches diagonals and proper nesting constrains.
 Note that the parameter do not ensure explicitly coarse-fine/EB crossings are avoided and the code will fail when this happens.
 
+AMReX generates the EB at the finest level (specified by `amr.max_level`) and subsequently coarsen the resulting
+EB data to coarser AMR levels (as well as multigrid levels) in order to ensure consistency across levels. As a consequence,
+increasing `amr.max_level` during the course of a simulation can lead in small changes to the EB, potentially uncovering
+previously covered regions for which the solver cannot provide initial conditions upon restart. It is thus advised to
+set `amr.max_level` to the desired maximum level you ever plan to use in the simulation, and limit the level at which
+the EB is refined (with `peleLM.refine_EB_max_level`) and refinement criteria are applied (with `amr.*****.max_level`)
+to a lower value while starting the simulation. A side effect of this process is that the generation of the EB can
+be excessively long if `amr.max_level` is large. To speed up the EB generation, one can use the following keys:
+
+::
+
+    eb2.num_coarsen_opt = 3
+    eb2.max_grid_size = 64
+
+Setting `eb2.num_coarsen_opt = 3` effectively speed the EB generation by coarsening the level at which the recursive EB intersection
+algorithm starts by a factor 2^3. A large value of this parameter can lead to an erroneous EB representation, missing small features,
+and should thus be kept at or below 4. The EB intersection algorithm relies on chopping the domain into boxes and finding those
+fully or partially covered. The size of these boxes can be controlled with `eb2.max_grid_size`, and can be adjusted to better
+match the number of MPI ranks used in the simulation.
+
+
 It is also possible to change the default adiabatic EB wall condition to an isothermal EB. To do so, one need to switch the following
 flag:
 
@@ -353,6 +394,12 @@ in ``Exec/RegTest/EB_BackwardStepFlame`` and ``Exec/RegTest/EB_FlowPastCylinder`
 
 .. note::
    Note that when using isothermal EB in combination with LES, the thermal diffusion coefficient employed to compute the EB boundary thermal flux only uses the molecular contribution.
+
+Lastly, it is possible to change the default redistribution scheme described in the :ref:`geometry with embedded boundaries section: <ssec:geoEB>`
+::
+
+    peleLM.adv_redist_type = StateRedist  # [OPT, DEF=StateRedist] Redistribution scheme for advection [StateRedist, FluxRedist, NoRedist]
+    peleLM.diff_redist_type = FluxRedist  # [OPT, DEF=FluxRedist]  Redistribution scheme for diffusion [StateRedist, FluxRedist, NoRedist]
 
 Linear solvers
 --------------
@@ -428,41 +475,41 @@ to activate `temporal` diagnostics performing these reductions at given interval
     peleLM.do_species_balance = 1               # [OPT, DEF=0] Compute species mass balance, if temporals activated
     peleLM.do_patch_mfr=1                       # [OPT, DEF=0] Activate patch based species flux diagbostics
     peleLM.bpatch.patchnames= <patch_name1 patch_name2 ..> # List of patchnames
-    
-    bpatch.patch_name1.patchtype=full-boundary             # patchtype one of "full-boundary", "circle, "rectangle", "circle-annular" or "rectangle-annular"	 
-    bpatch.patch_name1.boundary_direction=2                # patch normal direction 
-    bpatch.patch_name1.boundary_lo_or_hi=0                 # patch in low or high side of boundary    
+
+    bpatch.patch_name1.patchtype=full-boundary             # patchtype one of "full-boundary", "circle, "rectangle", "circle-annular" or "rectangle-annular"
+    bpatch.patch_name1.boundary_direction=2                # patch normal direction
+    bpatch.patch_name1.boundary_lo_or_hi=0                 # patch in low or high side of boundary
     bpatch.patch_name1.species= O2 N2                      # list of species names
-    
-    bpatch.patch_name2.patchtype=circle                    # patchtype one of "full-boundary", "circle, "rectangle", "circle-annular" or "rectangle-annular"	 
-    bpatch.patch_name2.boundary_direction=2                # patch normal direction 
-    bpatch.patch_name2.boundary_lo_or_hi=0                 # patch in low or high side of boundary   
+
+    bpatch.patch_name2.patchtype=circle                    # patchtype one of "full-boundary", "circle, "rectangle", "circle-annular" or "rectangle-annular"
+    bpatch.patch_name2.boundary_direction=2                # patch normal direction
+    bpatch.patch_name2.boundary_lo_or_hi=0                 # patch in low or high side of boundary
     bpatch.patch_name2.patch_circle_radius=0.1             # radius of the patch
-    bpatch.patch_name2.patch_circle_center=0.0 0.0 0.0     # coordinates of patch center 
+    bpatch.patch_name2.patch_circle_center=0.0 0.0 0.0     # coordinates of patch center
     bpatch.patch_name2.species= O2 N2                      # list of species names
-    
-    bpatch.patch_name3.patchtype=rectangle      	 
-    bpatch.patch_name3.boundary_direction=2                # patch normal direction 
-    bpatch.patch_name3.boundary_lo_or_hi=0                 # patch in low or high side of boundary   
+
+    bpatch.patch_name3.patchtype=rectangle
+    bpatch.patch_name3.boundary_direction=2                # patch normal direction
+    bpatch.patch_name3.boundary_lo_or_hi=0                 # patch in low or high side of boundary
     bpatch.patch_name3.patch_rectangle_lo=0.0 0.0 0.0      # coordinates of low corner of rectangle
     bpatch.patch_name3.patch_rectangle_hi=1.0 1.0 1.0      # coordinates of high corner of rectangle
     bpatch.patch_name3.species= O2 N2                      # list of species names
-    
-    bpatch.patch_name4.patchtype=circle-annular  	 
-    bpatch.patch_name4.boundary_direction=2                # patch normal direction 
-    bpatch.patch_name4.boundary_lo_or_hi=0                 # patch in low or high side of boundary   
+
+    bpatch.patch_name4.patchtype=circle-annular
+    bpatch.patch_name4.boundary_direction=2                # patch normal direction
+    bpatch.patch_name4.boundary_lo_or_hi=0                 # patch in low or high side of boundary
     bpatch.patch_name4.patch_circ_ann_center= 0.0 0.0 0.0  # center of annular circle
     bpatch.patch_name4.patch_circ_ann_inner_radius=0.1     # coordinates of patch center
-    bpatch.patch_name4.patch_circ_ann_outer_radius=0.2     # coordinates of patch center 
+    bpatch.patch_name4.patch_circ_ann_outer_radius=0.2     # coordinates of patch center
     bpatch.patch_name4.species= O2 N2                      # list of species names
-    
-    bpatch.patch_name5.patchtype=rectangle-annular         
-    bpatch.patch_name5.boundary_direction=2                     # patch normal direction 
-    bpatch.patch_name5.boundary_lo_or_hi=0                      # patch in low or high side of boundary   
-    bpatch.patch_name5.patch_rect_ann_outer_lo = -1.0 -1.0 -1.0 # coordinates of low corner of outer rectangle 
-    bpatch.patch_name5.patch_rect_ann_outer_hi =  1.0  1.0  1.0 # coordinates of high corner of outer rectangle  
-    bpatch.patch_name5.patch_rect_ann_inner_lo = -0.5 -0.5 -0.5 # coordinates of low corner of inner rectangle 
-    bpatch.patch_name5.patch_rect_ann_inner_hi =  0.5  0.5  0.5 # coordinates of high corner of inner rectangle 
+
+    bpatch.patch_name5.patchtype=rectangle-annular
+    bpatch.patch_name5.boundary_direction=2                     # patch normal direction
+    bpatch.patch_name5.boundary_lo_or_hi=0                      # patch in low or high side of boundary
+    bpatch.patch_name5.patch_rect_ann_outer_lo = -1.0 -1.0 -1.0 # coordinates of low corner of outer rectangle
+    bpatch.patch_name5.patch_rect_ann_outer_hi =  1.0  1.0  1.0 # coordinates of high corner of outer rectangle
+    bpatch.patch_name5.patch_rect_ann_inner_lo = -0.5 -0.5 -0.5 # coordinates of low corner of inner rectangle
+    bpatch.patch_name5.patch_rect_ann_inner_hi =  0.5  0.5  0.5 # coordinates of high corner of inner rectangle
     bpatch.patch_name5.species= O2 N2                           # list of species names
 
 The `do_temporal` flag will trigger the creation of a `temporals` folder in your run directory and the following entries
@@ -474,8 +521,8 @@ the balance (dMdt - sum of fluxes), and species balance (stored in `temporals/te
 advective \& diffusive fluxes across the domain boundaries, consumption rate integral and the error (dMdt - sum of fluxes - reaction).
 Users can also monitor species advective fluxes through specific regions of the domain boundaries (called as boundary patches).
 Patches can be defined on the low or high sides of non-embedded boundaries through the use of pre-defined shapes such as `circle`,
-`rectangle`,`circle-annular`, `rectangle-annular` and `full-boundary`. The zero AMR level, advective fluxes of each of the user-specified species will be 
-reported in the ASCII `temppatchmfr` file in the temporals folder. 
+`rectangle`,`circle-annular`, `rectangle-annular` and `full-boundary`. The zero AMR level, advective fluxes of each of the user-specified species will be
+reported in the ASCII `temppatchmfr` file in the temporals folder.
 
 Combustion diagnostics often involve the use of a mixture fraction and/or a progress variable, both of which can be defined
 at run time and added to the derived variables included in the plotfile. If `mixture_fraction` or `progress_variable` is
