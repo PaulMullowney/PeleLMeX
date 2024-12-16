@@ -1,0 +1,1035 @@
+Initializing AMReX (21.02-1856-g0b16e7d029c2-dirty)...
+MPI initialized with 1024 MPI processes
+MPI initialized with thread support level 0
+Initializing HIP...
+HIP initialized with 1024 devices.
+Initializing SUNDIALS with 1 threads...
+SUNDIALS initialized.
+AMReX (21.02-1856-g0b16e7d029c2-dirty) initialized
+Successfully read inputs file ... 
+
+ ================= Build infos =================
+ PeleLMeX    git hash: v21.10-412-gaa1490a-dirty
+ AMReX       git hash: 21.02-1856-g0b16e7d02-dirty
+ PelePhysics git hash: e50da8a6-dirty
+ AMReX-Hydro git hash: 13141b5
+ ===============================================
+ Initialization of Eos ... 
+
+ ==============================================================================
+ State components 
+ ==============================================================================
+ Velocity X: 0, Velocity Y: 1, Velocity Z: 2 
+ Density: 3
+ First species: 4
+ Enthalpy: 25
+ Temperature: 26
+ thermo. pressure: 27
+ => Total number of state variables: 28
+ ==============================================================================
+
+ Initialization of Transport ... 
+    Using mixture-averaged transport
+ Initialization of chemical reactor ... 
+Creating ReactorBase instance: ReactorCvode
+Initializing CVODE:
+Creating DiagBase instance: DiagConditional
+ Initializing data for 1 levels 
+25 variables found in PMF file
+2048 data lines found in PMF file
+Creating new distribution map on level: 0
+ Making new level 0 from scratch
+ Resetting fine-covered cells mask 
+ ==============================================================================
+ Typical values: 
+	Velocity: 0 0 0.7050881195 
+	Density:  0.6643859701
+	Temp:     939.289917
+	H:        -113232.8442
+	Y_H2:     0.002556706206
+	Y_H:      2.546368291e-06
+	Y_O:      9.15833722e-05
+	Y_O2:     0.2070346553
+	Y_OH:     0.0001941947476
+	Y_H2O:    0.01347846759
+	Y_HO2:    2.829307792e-05
+	Y_CH2:    7.693728135e-08
+	Y_CH2(S): 6.511098548e-09
+	Y_CH3:    1.308189952e-05
+	Y_CH4:    0.02038877529
+	Y_CO:     0.002078659707
+	Y_CO2:    0.01074408711
+	Y_HCO:    5.024173985e-07
+	Y_CH2O:   8.827914798e-05
+	Y_CH3O:   7.16121528e-07
+	Y_C2H4:   2.5525974e-05
+	Y_C2H5:   4.888748465e-07
+	Y_C2H6:   4.350026042e-05
+	Y_N2:     0.7462099134
+	Y_AR:     0
+ ==============================================================================
+ Est. time step - Conv: 0.0007091312223, divu: 1e+20
+ Initial dt: 7.091312223e-08
+
+ Doing initial projection(s) 
+
+ Initial velocity projection:   U: 0  V: 0  W: 0.7050881195
+ >> After initial velocity projection:   U: 0.09348390195  V: 0.1157239782  W: 0.5162852791
+ Est. time step - Conv: 0.0009684568208, divu: 0.0004044839945
+ Initial dt: 4.044839945e-08
+ Initial velocity projection:   U: 0.09348390195  V: 0.1157239782  W: 0.5162852791
+ >> After initial velocity projection:   U: 0.1528865124  V: 0.1601865481  W: 1.494779082
+ ==============================================================================
+
+ Doing initial pressure iteration(s) 
+
+ ================   INITIAL ITERATION [0]   ================ 
+ Est. time step - Conv: 0.0003344975897, divu: 0.0006285794191
+ STEP [-1] - Time: 0, dt 3.344975897e-08
+   SDC iter [1] 
+      Before SDC 1: max relative P mismatch is 7.180811857e-16
+   - oneSDC()::MACProjection()   --> Time: 0.567126817
+   - oneSDC()::ScalarAdvection() --> Time: 0.044357384
+   - oneSDC()::ScalarDiffusion() --> Time: 0.550584438
+   - oneSDC()::ScalarReaction()  --> Time: 1.347851416
+   SDC iter [2] 
+   - oneSDC()::Update t^{n+1,k}  --> Time: 1.339026779
+      Before SDC 2: max relative P mismatch is 0.0001296931788
+   - oneSDC()::MACProjection()   --> Time: 0.563229572
+   - oneSDC()::ScalarAdvection() --> Time: 0.042985994
+   - oneSDC()::ScalarDiffusion() --> Time: 0.581889456
+   - oneSDC()::ScalarReaction()  --> Time: 1.380661613
+   - Advance()::VelocityAdvance  --> Time: 0.33924638
+ >> PeleLMeX::Advance() --> Time: 5.601288958
+
+ ================   INITIAL ITERATION [1]   ================ 
+ Est. time step - Conv: 2.475027336e-06, divu: 0.0006285794191
+ STEP [-1] - Time: 0, dt 2.475027336e-10
+   SDC iter [1] 
+      Before SDC 1: max relative P mismatch is 7.180811857e-16
+   - oneSDC()::MACProjection()   --> Time: 0.669527941
+   - oneSDC()::ScalarAdvection() --> Time: 0.043601181
+   - oneSDC()::ScalarDiffusion() --> Time: 0.49394953
+   - oneSDC()::ScalarReaction()  --> Time: 0.243515406
+   SDC iter [2] 
+   - oneSDC()::Update t^{n+1,k}  --> Time: 0.234214843
+      Before SDC 2: max relative P mismatch is 9.517342325e-07
+   - oneSDC()::MACProjection()   --> Time: 0.653308452
+   - oneSDC()::ScalarAdvection() --> Time: 0.044950153
+   - oneSDC()::ScalarDiffusion() --> Time: 0.711769784
+   - oneSDC()::ScalarReaction()  --> Time: 0.241360795
+   - Advance()::VelocityAdvance  --> Time: 0.442739558
+ >> PeleLMeX::Advance() --> Time: 3.725957436
+
+ ================   INITIAL ITERATION [2]   ================ 
+ Est. time step - Conv: 2.146306416e-07, divu: 0.0006285794191
+ STEP [-1] - Time: 0, dt 2.146306416e-11
+   SDC iter [1] 
+      Before SDC 1: max relative P mismatch is 7.180811857e-16
+   - oneSDC()::MACProjection()   --> Time: 0.770554692
+   - oneSDC()::ScalarAdvection() --> Time: 0.044749929
+   - oneSDC()::ScalarDiffusion() --> Time: 0.580047864
+   - oneSDC()::ScalarReaction()  --> Time: 0.145793797
+   SDC iter [2] 
+   - oneSDC()::Update t^{n+1,k}  --> Time: 0.136441891
+      Before SDC 2: max relative P mismatch is 8.25354937e-08
+   - oneSDC()::MACProjection()   --> Time: 1.777788261
+   - oneSDC()::ScalarAdvection() --> Time: 0.057244959
+   - oneSDC()::ScalarDiffusion() --> Time: 0.779445237
+   - oneSDC()::ScalarReaction()  --> Time: 0.145463739
+   - Advance()::VelocityAdvance  --> Time: 0.470395682
+ >> PeleLMeX::Advance() --> Time: 4.931584204
+ ==============================================================================
+
+ ====================   NEW TIME STEP   ==================== 
+ Est. time step - Conv: 6.317918781e-08, divu: 0.0006285794191
+ STEP [0] - Time: 0, dt 6.317918781e-12
+   SDC iter [1] 
+      Before SDC 1: max relative P mismatch is 7.180811857e-16
+   - oneSDC()::MACProjection()   --> Time: 0.696337858
+   - oneSDC()::ScalarAdvection() --> Time: 0.053654007
+   - oneSDC()::ScalarDiffusion() --> Time: 0.441359025
+   - oneSDC()::ScalarReaction()  --> Time: 0.114967705
+   SDC iter [2] 
+   - oneSDC()::Update t^{n+1,k}  --> Time: 0.107526876
+      Before SDC 2: max relative P mismatch is 2.430634483e-08
+   - oneSDC()::MACProjection()   --> Time: 1.123720556
+   - oneSDC()::ScalarAdvection() --> Time: 0.047248265
+   - oneSDC()::ScalarDiffusion() --> Time: 0.854230397
+   - oneSDC()::ScalarReaction()  --> Time: 0.11608468
+   - Advance()::VelocityAdvance  --> Time: 0.573420092
+ >> PeleLMeX::Advance() --> Time: 4.189425275
+
+ ====================   NEW TIME STEP   ==================== 
+ Est. time step - Conv: 2.811087668e-07, divu: 0.0001819169388
+ STEP [1] - Time: 6.317918781e-12, dt 6.949710659e-12
+   SDC iter [1] 
+      Before SDC 1: max relative P mismatch is 1.193183316e-08
+   - oneSDC()::MACProjection()   --> Time: 0.931952023
+   - oneSDC()::ScalarAdvection() --> Time: 0.046195796
+   - oneSDC()::ScalarDiffusion() --> Time: 0.532422807
+   - oneSDC()::ScalarReaction()  --> Time: 0.118109971
+   SDC iter [2] 
+   - oneSDC()::Update t^{n+1,k}  --> Time: 0.110448123
+      Before SDC 2: max relative P mismatch is 1.49058589e-09
+   - oneSDC()::MACProjection()   --> Time: 0.68292807
+   - oneSDC()::ScalarAdvection() --> Time: 0.046685914
+   - oneSDC()::ScalarDiffusion() --> Time: 0.387903717
+   - oneSDC()::ScalarReaction()  --> Time: 0.118865305
+   - Advance()::VelocityAdvance  --> Time: 0.291877102
+ >> PeleLMeX::Advance() --> Time: 3.360783931
+
+ ====================   NEW TIME STEP   ==================== 
+ Est. time step - Conv: 5.31984971e-07, divu: 0.0001819121327
+ STEP [2] - Time: 1.326762944e-11, dt 7.644681725e-12
+   SDC iter [1] 
+      Before SDC 1: max relative P mismatch is 3.640447572e-10
+   - oneSDC()::MACProjection()   --> Time: 0.555509816
+   - oneSDC()::ScalarAdvection() --> Time: 0.046132176
+   - oneSDC()::ScalarDiffusion() --> Time: 0.800341782
+   - oneSDC()::ScalarReaction()  --> Time: 0.124253329
+   SDC iter [2] 
+   - oneSDC()::Update t^{n+1,k}  --> Time: 0.127846596
+      Before SDC 2: max relative P mismatch is 2.624295904e-09
+   - oneSDC()::MACProjection()   --> Time: 1.610564173
+   - oneSDC()::ScalarAdvection() --> Time: 0.0723351
+   - oneSDC()::ScalarDiffusion() --> Time: 0.589702797
+   - oneSDC()::ScalarReaction()  --> Time: 0.120971203
+   - Advance()::VelocityAdvance  --> Time: 0.475979417
+ >> PeleLMeX::Advance() --> Time: 4.552269594
+
+ ====================   NEW TIME STEP   ==================== 
+ Est. time step - Conv: 6.879350671e-07, divu: 0.000181906853
+ STEP [3] - Time: 2.091231117e-11, dt 8.409149898e-12
+   SDC iter [1] 
+      Before SDC 1: max relative P mismatch is 5.881815921e-10
+   - oneSDC()::MACProjection()   --> Time: 0.865022864
+   - oneSDC()::ScalarAdvection() --> Time: 0.04860723
+   - oneSDC()::ScalarDiffusion() --> Time: 0.532600092
+   - oneSDC()::ScalarReaction()  --> Time: 0.123802738
+   SDC iter [2] 
+   - oneSDC()::Update t^{n+1,k}  --> Time: 0.136731961
+      Before SDC 2: max relative P mismatch is 2.926684054e-09
+   - oneSDC()::MACProjection()   --> Time: 0.711438072
+   - oneSDC()::ScalarAdvection() --> Time: 0.047738202
+   - oneSDC()::ScalarDiffusion() --> Time: 0.427538362
+   - oneSDC()::ScalarReaction()  --> Time: 0.124443327
+   - Advance()::VelocityAdvance  --> Time: 0.259865852
+ >> PeleLMeX::Advance() --> Time: 3.325082258
+
+ ====================   NEW TIME STEP   ==================== 
+ Est. time step - Conv: 8.538546379e-07, divu: 0.0001819010535
+ STEP [4] - Time: 2.932146106e-11, dt 9.250064888e-12
+   SDC iter [1] 
+      Before SDC 1: max relative P mismatch is 6.562913054e-10
+   - oneSDC()::MACProjection()   --> Time: 0.503416761
+   - oneSDC()::ScalarAdvection() --> Time: 0.048453163
+   - oneSDC()::ScalarDiffusion() --> Time: 0.454339966
+   - oneSDC()::ScalarReaction()  --> Time: 0.122420158
+   SDC iter [2] 
+   - oneSDC()::Update t^{n+1,k}  --> Time: 0.113804634
+      Before SDC 2: max relative P mismatch is 3.218401231e-09
+   - oneSDC()::MACProjection()   --> Time: 0.80128539
+   - oneSDC()::ScalarAdvection() --> Time: 0.058938049
+   - oneSDC()::ScalarDiffusion() --> Time: 0.538459695
+   - oneSDC()::ScalarReaction()  --> Time: 0.121389223
+   - Advance()::VelocityAdvance  --> Time: 0.304221444
+ >> PeleLMeX::Advance() --> Time: 3.148375799
+
+ ====================   NEW TIME STEP   ==================== 
+ Est. time step - Conv: 1.024365061e-06, divu: 0.0001818946839
+ STEP [5] - Time: 3.857152595e-11, dt 1.017507138e-11
+   SDC iter [1] 
+      Before SDC 1: max relative P mismatch is 7.196298001e-10
+   - oneSDC()::MACProjection()   --> Time: 1.22794288
+   - oneSDC()::ScalarAdvection() --> Time: 0.073478125
+   - oneSDC()::ScalarDiffusion() --> Time: 0.761018324
+   - oneSDC()::ScalarReaction()  --> Time: 0.113597235
+   SDC iter [2] 
+   - oneSDC()::Update t^{n+1,k}  --> Time: 0.12439603
+      Before SDC 2: max relative P mismatch is 3.539511912e-09
+   - oneSDC()::MACProjection()   --> Time: 1.00978518
+   - oneSDC()::ScalarAdvection() --> Time: 0.049566139
+   - oneSDC()::ScalarDiffusion() --> Time: 0.541752783
+   - oneSDC()::ScalarReaction()  --> Time: 0.114143641
+   - Advance()::VelocityAdvance  --> Time: 0.273168278
+ >> PeleLMeX::Advance() --> Time: 4.340861231
+
+ ====================   NEW TIME STEP   ==================== 
+ Est. time step - Conv: 1.173995859e-06, divu: 0.0001818876892
+ STEP [6] - Time: 4.874659733e-11, dt 1.119257851e-11
+   SDC iter [1] 
+      Before SDC 1: max relative P mismatch is 7.916305082e-10
+   - oneSDC()::MACProjection()   --> Time: 0.604735984
+   - oneSDC()::ScalarAdvection() --> Time: 0.049758376
+   - oneSDC()::ScalarDiffusion() --> Time: 0.445326969
+   - oneSDC()::ScalarReaction()  --> Time: 0.112027607
+   SDC iter [2] 
+   - oneSDC()::Update t^{n+1,k}  --> Time: 0.108500907
+      Before SDC 2: max relative P mismatch is 3.892424828e-09
+   - oneSDC()::MACProjection()   --> Time: 0.577160543
+   - oneSDC()::ScalarAdvection() --> Time: 0.04956226
+   - oneSDC()::ScalarDiffusion() --> Time: 0.401439035
+   - oneSDC()::ScalarReaction()  --> Time: 0.115119474
+   - Advance()::VelocityAdvance  --> Time: 0.262441208
+ >> PeleLMeX::Advance() --> Time: 2.825806767
+
+ ====================   NEW TIME STEP   ==================== 
+ Est. time step - Conv: 1.337512517e-06, divu: 0.0001818800094
+ STEP [7] - Time: 5.993917584e-11, dt 1.231183637e-11
+   SDC iter [1] 
+      Before SDC 1: max relative P mismatch is 8.70802693e-10
+   - oneSDC()::MACProjection()   --> Time: 0.53589206
+   - oneSDC()::ScalarAdvection() --> Time: 0.049809478
+   - oneSDC()::ScalarDiffusion() --> Time: 0.426955145
+   - oneSDC()::ScalarReaction()  --> Time: 0.115542371
+   SDC iter [2] 
+   - oneSDC()::Update t^{n+1,k}  --> Time: 0.109895799
+      Before SDC 2: max relative P mismatch is 4.266777207e-09
+   - oneSDC()::MACProjection()   --> Time: 0.528741366
+   - oneSDC()::ScalarAdvection() --> Time: 0.052510732
+   - oneSDC()::ScalarDiffusion() --> Time: 0.409680924
+   - oneSDC()::ScalarReaction()  --> Time: 0.115115678
+   - Advance()::VelocityAdvance  --> Time: 0.247600198
+ >> PeleLMeX::Advance() --> Time: 2.684136731
+
+ ====================   NEW TIME STEP   ==================== 
+ Est. time step - Conv: 1.515761105e-06, divu: 0.0001818715789
+ STEP [8] - Time: 7.225101221e-11, dt 1.354302e-11
+   SDC iter [1] 
+      Before SDC 1: max relative P mismatch is 9.578694625e-10
+   - oneSDC()::MACProjection()   --> Time: 0.50239703
+   - oneSDC()::ScalarAdvection() --> Time: 0.050478837
+   - oneSDC()::ScalarDiffusion() --> Time: 0.515322293
+   - oneSDC()::ScalarReaction()  --> Time: 0.116205736
+   SDC iter [2] 
+   - oneSDC()::Update t^{n+1,k}  --> Time: 0.109865692
+      Before SDC 2: max relative P mismatch is 4.692006211e-09
+   - oneSDC()::MACProjection()   --> Time: 0.875007132
+   - oneSDC()::ScalarAdvection() --> Time: 0.06031841
+   - oneSDC()::ScalarDiffusion() --> Time: 0.891705417
+   - oneSDC()::ScalarReaction()  --> Time: 0.115893979
+   - Advance()::VelocityAdvance  --> Time: 0.328603286
+ >> PeleLMeX::Advance() --> Time: 3.649760498
+
+ ====================   NEW TIME STEP   ==================== 
+ Est. time step - Conv: 1.709914206e-06, divu: 0.0001818623263
+ STEP [9] - Time: 8.579403221e-11, dt 1.4897322e-11
+   SDC iter [1] 
+      Before SDC 1: max relative P mismatch is 1.053617834e-09
+   - oneSDC()::MACProjection()   --> Time: 1.007585203
+   - oneSDC()::ScalarAdvection() --> Time: 0.052060371
+   - oneSDC()::ScalarDiffusion() --> Time: 0.662836904
+   - oneSDC()::ScalarReaction()  --> Time: 0.112057657
+   SDC iter [2] 
+   - oneSDC()::Update t^{n+1,k}  --> Time: 0.105757674
+      Before SDC 2: max relative P mismatch is 5.160667206e-09
+   - oneSDC()::MACProjection()   --> Time: 0.627346721
+   - oneSDC()::ScalarAdvection() --> Time: 0.067997498
+   - oneSDC()::ScalarDiffusion() --> Time: 0.594662097
+   - oneSDC()::ScalarReaction()  --> Time: 0.113703672
+   - Advance()::VelocityAdvance  --> Time: 0.302640174
+ >> PeleLMeX::Advance() --> Time: 3.743473543
+
+ ====================   NEW TIME STEP   ==================== 
+ ==============================================================================
+ Typical values: 
+	Velocity: 0.1814218966 0.1853892684 1.500807968 
+	Density:  0.6643859699
+	Temp:     939.289917
+	H:        -113232.8442
+	Y_H2:     0.002556706207
+	Y_H:      2.546414711e-06
+	Y_O:      9.158339988e-05
+	Y_O2:     0.2070346553
+	Y_OH:     0.0001941949064
+	Y_H2O:    0.01347846902
+	Y_HO2:    2.829380504e-05
+	Y_CH2:    7.693124987e-08
+	Y_CH2(S): 6.464744263e-09
+	Y_CH3:    1.30821856e-05
+	Y_CH4:    0.02038877525
+	Y_CO:     0.002078659885
+	Y_CO2:    0.01074408711
+	Y_HCO:    5.025262736e-07
+	Y_CH2O:   8.827911498e-05
+	Y_CH3O:   7.161492386e-07
+	Y_C2H4:   2.552596921e-05
+	Y_C2H5:   4.888725003e-07
+	Y_C2H6:   4.350028417e-05
+	Y_N2:     0.7462099124
+	Y_AR:     0
+ ==============================================================================
+ Est. time step - Conv: 1.921315647e-06, divu: 0.0001818521735
+ STEP [10] - Time: 1.006913542e-10, dt 1.63870542e-11
+   SDC iter [1] 
+      Before SDC 1: max relative P mismatch is 1.15899395e-09
+   - oneSDC()::MACProjection()   --> Time: 0.766793659
+   - oneSDC()::ScalarAdvection() --> Time: 0.051948115
+   - oneSDC()::ScalarDiffusion() --> Time: 0.550490956
+   - oneSDC()::ScalarReaction()  --> Time: 0.111525516
+   SDC iter [2] 
+   - oneSDC()::Update t^{n+1,k}  --> Time: 0.106388163
+      Before SDC 2: max relative P mismatch is 5.676268162e-09
+   - oneSDC()::MACProjection()   --> Time: 0.715396457
+   - oneSDC()::ScalarAdvection() --> Time: 0.053419931
+   - oneSDC()::ScalarDiffusion() --> Time: 0.627271586
+   - oneSDC()::ScalarReaction()  --> Time: 0.0893829
+   - Advance()::VelocityAdvance  --> Time: 0.254029803
+ >> PeleLMeX::Advance() --> Time: 3.430975525
+
+ ====================   NEW TIME STEP   ==================== 
+ Est. time step - Conv: 2.15144573e-06, divu: 0.0001818410358
+ STEP [11] - Time: 1.170784084e-10, dt 1.802575962e-11
+   SDC iter [1] 
+      Before SDC 1: max relative P mismatch is 1.274779802e-09
+   - oneSDC()::MACProjection()   --> Time: 0.589390662
+   - oneSDC()::ScalarAdvection() --> Time: 0.053293865
+   - oneSDC()::ScalarDiffusion() --> Time: 0.402297103
+   - oneSDC()::ScalarReaction()  --> Time: 0.089193643
+   SDC iter [2] 
+   - oneSDC()::Update t^{n+1,k}  --> Time: 0.088640762
+      Before SDC 2: max relative P mismatch is 6.243452766e-09
+   - oneSDC()::MACProjection()   --> Time: 0.592935169
+   - oneSDC()::ScalarAdvection() --> Time: 0.054185409
+   - oneSDC()::ScalarDiffusion() --> Time: 0.407994089
+   - oneSDC()::ScalarReaction()  --> Time: 0.089175749
+   - Advance()::VelocityAdvance  --> Time: 0.246025599
+ >> PeleLMeX::Advance() --> Time: 2.739110059
+
+ ====================   NEW TIME STEP   ==================== 
+ Est. time step - Conv: 2.401937466e-06, divu: 0.0001818288209
+ STEP [12] - Time: 1.35104168e-10, dt 1.982833558e-11
+   SDC iter [1] 
+      Before SDC 1: max relative P mismatch is 1.402095453e-09
+   - oneSDC()::MACProjection()   --> Time: 0.543371226
+   - oneSDC()::ScalarAdvection() --> Time: 0.053062987
+   - oneSDC()::ScalarDiffusion() --> Time: 0.404487964
+   - oneSDC()::ScalarReaction()  --> Time: 0.096795751
+   SDC iter [2] 
+   - oneSDC()::Update t^{n+1,k}  --> Time: 0.096708706
+      Before SDC 2: max relative P mismatch is 6.867392351e-09
+   - oneSDC()::MACProjection()   --> Time: 0.615474038
+   - oneSDC()::ScalarAdvection() --> Time: 0.052291931
+   - oneSDC()::ScalarDiffusion() --> Time: 0.408457654
+   - oneSDC()::ScalarReaction()  --> Time: 0.096870674
+   - Advance()::VelocityAdvance  --> Time: 0.252962922
+ >> PeleLMeX::Advance() --> Time: 2.722773247
+
+ ====================   NEW TIME STEP   ==================== 
+ Est. time step - Conv: 2.67461511e-06, divu: 0.0001818154284
+ STEP [13] - Time: 1.549325036e-10, dt 2.181116914e-11
+   SDC iter [1] 
+      Before SDC 1: max relative P mismatch is 1.542104482e-09
+   - oneSDC()::MACProjection()   --> Time: 0.744815148
+   - oneSDC()::ScalarAdvection() --> Time: 0.052963266
+   - oneSDC()::ScalarDiffusion() --> Time: 0.425135173
+   - oneSDC()::ScalarReaction()  --> Time: 0.102814777
+   SDC iter [2] 
+   - oneSDC()::Update t^{n+1,k}  --> Time: 0.095486748
+      Before SDC 2: max relative P mismatch is 7.553687232e-09
+   - oneSDC()::MACProjection()   --> Time: 0.925479592
+   - oneSDC()::ScalarAdvection() --> Time: 0.055642664
+   - oneSDC()::ScalarDiffusion() --> Time: 0.42820664
+   - oneSDC()::ScalarReaction()  --> Time: 0.102416631
+   - Advance()::VelocityAdvance  --> Time: 0.540668146
+ >> PeleLMeX::Advance() --> Time: 3.572381672
+
+ ====================   NEW TIME STEP   ==================== 
+ Est. time step - Conv: 2.971544649e-06, divu: 0.0001818007497
+ STEP [14] - Time: 1.767436728e-10, dt 2.399228606e-11
+   SDC iter [1] 
+      Before SDC 1: max relative P mismatch is 1.696071572e-09
+   - oneSDC()::MACProjection()   --> Time: 0.713792114
+   - oneSDC()::ScalarAdvection() --> Time: 0.056760925
+   - oneSDC()::ScalarDiffusion() --> Time: 0.936708584
+   - oneSDC()::ScalarReaction()  --> Time: 0.10468665
+   SDC iter [2] 
+   - oneSDC()::Update t^{n+1,k}  --> Time: 0.095032367
+      Before SDC 2: max relative P mismatch is 8.308521237e-09
+   - oneSDC()::MACProjection()   --> Time: 0.740592118
+   - oneSDC()::ScalarAdvection() --> Time: 0.082910873
+   - oneSDC()::ScalarDiffusion() --> Time: 0.677313846
+   - oneSDC()::ScalarReaction()  --> Time: 0.111116702
+   - Advance()::VelocityAdvance  --> Time: 0.330518909
+ >> PeleLMeX::Advance() --> Time: 3.930789262
+
+ ====================   NEW TIME STEP   ==================== 
+ Est. time step - Conv: 3.295094517e-06, divu: 0.0001817846668
+ STEP [15] - Time: 2.007359588e-10, dt 2.639151466e-11
+   SDC iter [1] 
+      Before SDC 1: max relative P mismatch is 1.86539167e-09
+   - oneSDC()::MACProjection()   --> Time: 1.018147212
+   - oneSDC()::ScalarAdvection() --> Time: 0.061976491
+   - oneSDC()::ScalarDiffusion() --> Time: 0.46253341
+   - oneSDC()::ScalarReaction()  --> Time: 0.111977716
+   SDC iter [2] 
+   - oneSDC()::Update t^{n+1,k}  --> Time: 0.111822054
+      Before SDC 2: max relative P mismatch is 9.138684398e-09
+   - oneSDC()::MACProjection()   --> Time: 0.737423511
+   - oneSDC()::ScalarAdvection() --> Time: 0.054567761
+   - oneSDC()::ScalarDiffusion() --> Time: 0.471949008
+   - oneSDC()::ScalarReaction()  --> Time: 0.116218521
+   - Advance()::VelocityAdvance  --> Time: 0.323557465
+ >> PeleLMeX::Advance() --> Time: 3.543034172
+
+ ====================   NEW TIME STEP   ==================== 
+ Est. time step - Conv: 3.648009168e-06, divu: 0.0001817670522
+ STEP [16] - Time: 2.271274735e-10, dt 2.903066613e-11
+   SDC iter [1] 
+      Before SDC 1: max relative P mismatch is 2.05160635e-09
+   - oneSDC()::MACProjection()   --> Time: 0.624494564
+   - oneSDC()::ScalarAdvection() --> Time: 0.057821173
+   - oneSDC()::ScalarDiffusion() --> Time: 0.417474639
+   - oneSDC()::ScalarReaction()  --> Time: 0.115955131
+   SDC iter [2] 
+   - oneSDC()::Update t^{n+1,k}  --> Time: 0.111034202
+      Before SDC 2: max relative P mismatch is 1.00517147e-08
+   - oneSDC()::MACProjection()   --> Time: 0.629798505
+   - oneSDC()::ScalarAdvection() --> Time: 0.058919492
+   - oneSDC()::ScalarDiffusion() --> Time: 0.483244597
+   - oneSDC()::ScalarReaction()  --> Time: 0.111518296
+   - Advance()::VelocityAdvance  --> Time: 0.263041852
+ >> PeleLMeX::Advance() --> Time: 2.962663737
+
+ ====================   NEW TIME STEP   ==================== 
+ Est. time step - Conv: 4.033502223e-06, divu: 0.0001817477682
+ STEP [17] - Time: 2.561581396e-10, dt 3.193373274e-11
+   SDC iter [1] 
+      Before SDC 1: max relative P mismatch is 2.256397792e-09
+   - oneSDC()::MACProjection()   --> Time: 0.609485555
+   - oneSDC()::ScalarAdvection() --> Time: 0.058206477
+   - oneSDC()::ScalarDiffusion() --> Time: 0.453993939
+   - oneSDC()::ScalarReaction()  --> Time: 0.111950612
+   SDC iter [2] 
+   - oneSDC()::Update t^{n+1,k}  --> Time: 0.114416771
+      Before SDC 2: max relative P mismatch is 1.105586749e-08
+   - oneSDC()::MACProjection()   --> Time: 0.60641026
+   - oneSDC()::ScalarAdvection() --> Time: 0.058798622
+   - oneSDC()::ScalarDiffusion() --> Time: 0.456272814
+   - oneSDC()::ScalarReaction()  --> Time: 0.116026477
+   - Advance()::VelocityAdvance  --> Time: 0.287038372
+ >> PeleLMeX::Advance() --> Time: 2.954567953
+
+ ====================   NEW TIME STEP   ==================== 
+ Est. time step - Conv: 4.455375814e-06, divu: 0.0001817266664
+ STEP [18] - Time: 2.880918724e-10, dt 3.512710602e-11
+   SDC iter [1] 
+      Before SDC 1: max relative P mismatch is 2.481583457e-09
+   - oneSDC()::MACProjection()   --> Time: 0.609440459
+   - oneSDC()::ScalarAdvection() --> Time: 0.059704667
+   - oneSDC()::ScalarDiffusion() --> Time: 0.437499787
+   - oneSDC()::ScalarReaction()  --> Time: 0.115465928
+   SDC iter [2] 
+   - oneSDC()::Update t^{n+1,k}  --> Time: 0.111604005
+      Before SDC 2: max relative P mismatch is 1.216034928e-08
+   - oneSDC()::MACProjection()   --> Time: 0.657390651
+   - oneSDC()::ScalarAdvection() --> Time: 0.058723812
+   - oneSDC()::ScalarDiffusion() --> Time: 0.421786683
+   - oneSDC()::ScalarReaction()  --> Time: 0.116140529
+   - Advance()::VelocityAdvance  --> Time: 0.289526024
+ >> PeleLMeX::Advance() --> Time: 2.960584997
+
+ ====================   NEW TIME STEP   ==================== 
+ Est. time step - Conv: 4.918181253e-06, divu: 0.000181703587
+ STEP [19] - Time: 3.232189784e-10, dt 3.863981662e-11
+   SDC iter [1] 
+      Before SDC 1: max relative P mismatch is 2.729220649e-09
+   - oneSDC()::MACProjection()   --> Time: 0.540062929
+   - oneSDC()::ScalarAdvection() --> Time: 0.060395081
+   - oneSDC()::ScalarDiffusion() --> Time: 0.442023875
+   - oneSDC()::ScalarReaction()  --> Time: 0.115812015
+   SDC iter [2] 
+   - oneSDC()::Update t^{n+1,k}  --> Time: 0.11290245
+      Before SDC 2: max relative P mismatch is 1.337498487e-08
+   - oneSDC()::MACProjection()   --> Time: 0.623823566
+   - oneSDC()::ScalarAdvection() --> Time: 0.083935612
+   - oneSDC()::ScalarDiffusion() --> Time: 0.44362586
+   - oneSDC()::ScalarReaction()  --> Time: 0.113128302
+   - Advance()::VelocityAdvance  --> Time: 0.292441129
+ >> PeleLMeX::Advance() --> Time: 2.913242973
+
+ >> Final simulation time: 3.61858795e-10
+
+Total Time: 86.29268765
+
+
+TinyProfiler total time across processes [min...avg...max]: 86.29 ... 86.29 ... 86.31
+
+-----------------------------------------------------------------------------------------------
+Name                                            NCalls  Excl. Min  Excl. Avg  Excl. Max   Max %
+-----------------------------------------------------------------------------------------------
+FabArray::ParallelCopy_finish()                  48474      3.988      25.38      30.23  35.02%
+FillBoundary_finish()                           118801      12.57      19.12      28.83  33.41%
+FillBoundary_nowait()                           118801      3.714      6.607      11.84  13.72%
+MLMG::ResNormInf()                                2807      7.477      8.422      9.804  11.36%
+MLABecLaplacian::Fsmooth()                      100692      2.577      2.782      4.763   5.52%
+PeleLMeX::advance::reactions                        46    0.05109     0.4408      4.515   5.23%
+MLCellLinOp::applyBC()                          124614     0.9909      1.321      4.291   4.97%
+Pele::ReactorCvode::cF_RHS()                      1285      1.696      2.017       4.22   4.89%
+Pele::ReactorCvode::react():CVode                  188      1.048      1.356      3.684   4.27%
+PeleLMeX::advance::scalars_adv                      46      1.873      2.157       2.34   2.71%
+MLMG::solve()                                      280     0.9136      1.786      2.259   2.62%
+PeleLMeX::Setup()                                    1     0.1274     0.5861      1.842   2.13%
+FabArray::ParallelCopy_nowait()                  48474     0.1554     0.3284      1.806   2.09%
+FabArray::norminf()                               3444      1.211      1.348      1.787   2.07%
+DistributionMapping::LeastUsedCPUs()                 2    0.01378      1.271       1.73   2.00%
+MLABecLaplacian::Fapply()                        23291     0.8539     0.8905      1.367   1.58%
+PeleLMeX::calcDiffusivity()                         71     0.9459     0.9559     0.9606   1.11%
+FabArray::setVal()                               37063     0.3587     0.4039     0.8333   0.97%
+PeleLMeX::getDiffusivity()                        1003     0.6667     0.7059     0.7571   0.88%
+FabArray::Xpay()                                 26090     0.4381     0.4687     0.7412   0.86%
+PhysBCFunct::()                                   1065   0.003553    0.06311     0.6692   0.78%
+amrex::Copy()                                    10935     0.4437     0.4594     0.6182   0.72%
+PeleLMeX::advance::diffusion                        69     0.1646      0.185     0.6099   0.71%
+MLMG::addInterpCorrection()                      22743     0.2662     0.3146     0.6043   0.70%
+MLNodeLaplacian::Fsmooth()                        4914     0.3293       0.36     0.5981   0.69%
+MLCellLinOp::compFlux()                            631     0.5356     0.5513     0.5936   0.69%
+amrex::average_down                              22167      0.203     0.2548     0.5853   0.68%
+PeleLMeX::MLNorm0()                                 50     0.1304     0.2022     0.5756   0.67%
+PeleLMeX::advanceChemistry_Lev0()                   47     0.1059     0.1974      0.565   0.65%
+PeleLMeX::computeSpeciesEnthalpyFlux()             257     0.4392     0.4615     0.4761   0.55%
+amrex::Dot()                                        13          0  0.0004632     0.4743   0.55%
+PeleLMeX::advance::mac                              69  0.0005867    0.01901     0.4604   0.53%
+PeleLMeX::computeDifferentialDiffusionFluxes()      71     0.4106     0.4353     0.4547   0.53%
+Pele::ReactorCvode::react()                        188     0.3701     0.3982     0.4446   0.52%
+MLNodeLinOp::applyBC()                            7670    0.01029    0.02043     0.3059   0.35%
+PeleLMeX::adjustSpeciesFluxes()                    117     0.2856     0.2944     0.2993   0.35%
+PeleLMeX::differentialDiffusionUpdate()             46     0.2861     0.2944     0.2986   0.35%
+PeleLMeX::computeDt()                               25      0.106     0.1912     0.2956   0.34%
+FabArray::mult()                                  2103     0.2356     0.2483     0.2624   0.30%
+PeleLMeX::advance::velocity                         23    0.08445    0.09354     0.2561   0.30%
+PeleLMeX::fluxDivergence()                         372     0.2376     0.2463     0.2516   0.29%
+MLNodeLaplacian::interpolation()                  2457     0.1105     0.1243     0.2473   0.29%
+FabArray::Saxpy()                                   61   0.001929   0.002234     0.2451   0.28%
+average_down_faces                               13005    0.08742     0.1023     0.2252   0.26%
+PeleLMeX::oneSDC()                                  46  0.0004326   0.009642     0.2087   0.24%
+amrex::Add()                                      2858     0.1762     0.1822      0.193   0.22%
+PeleLMeX::computeInstantaneousReactionRate()        46     0.1785     0.1833     0.1861   0.22%
+PeleLMeX::macProject()                              46     0.1803     0.1836     0.1848   0.21%
+MLABecLaplacian::normalize()                         7          0  0.0001621      0.166   0.19%
+PeleLMeX::MFSum()                                   40    0.08203     0.1436     0.1632   0.19%
+MLLinOp::makeSubCommunicator()                      29     0.1035     0.1398      0.156   0.18%
+MLNodeLaplacian::Fapply()                         2756    0.06981    0.07624     0.1426   0.17%
+MLCellLinOp::prepareForSolve()                     701    0.07675    0.09685     0.1415   0.16%
+MLTensorOp::apply()                                365     0.1272     0.1312     0.1362   0.16%
+PeleLMeX::predictVelocity()                         46      0.118       0.12      0.124   0.14%
+FillPatchSingleLevel                              1043     0.1062     0.1099     0.1135   0.13%
+FabArray::FillBoundary()                        113567    0.05162    0.06441     0.1028   0.12%
+MLNodeLaplacian::restriction()                    2457    0.02663     0.0348    0.09375   0.11%
+MLCellLinOp::setLevelBC()                          701    0.02116    0.03135    0.09072   0.11%
+DiffusionOp::diffuse_scalar()                      186    0.07854    0.08219    0.08981   0.10%
+DiffusionOp::computeDiffFluxes()                   328     0.0588    0.06229    0.07142   0.08%
+MLCellLinOp::smooth()                            50346    0.03387    0.04274    0.07051   0.08%
+PeleLMeX::Advance()                                 23  0.0007409   0.003714    0.06636   0.08%
+MLCGSolver::bicgstab                                 2          0  6.063e-05    0.06209   0.07%
+FabArrayBase::getFB()                           119051    0.02968    0.03731    0.05632   0.07%
+PeleLMeX::calcDivU()                                48    0.05042    0.05163    0.05224   0.06%
+PeleLMeX::doDiagnostics()                           20    0.03192    0.03895    0.04686   0.05%
+FabArray::ParallelCopy()                         48474    0.01832     0.0233    0.04039   0.05%
+PeleLMeX::getVelForces()                            92    0.03696     0.0382    0.03931   0.05%
+MLMG::prepareForSolve()                            280    0.01926    0.02403    0.03766   0.04%
+PeleLMeX::Init()                                     1  7.254e-06    0.00027    0.02982   0.03%
+MLCellLinOp::apply()                             23291   0.009128    0.01177     0.0225   0.03%
+MLMG::computeResidual()                           2527    0.01759    0.01868    0.02211   0.03%
+PeleLMeX::derive()                                  70    0.01955     0.0201    0.02067   0.02%
+MLMG::mgVcycle()                                  2527   0.009733    0.01222    0.02036   0.02%
+MLCGSolver::ParallelAllReduce                       20          0  1.681e-05    0.01722   0.02%
+MLCellLinOp::correctionResidual()                20286   0.008826    0.01128    0.01678   0.02%
+PeleLMeX::main()                                     1   0.001307   0.002031    0.01615   0.02%
+MLMG:computeResOfCorrection()                    22743   0.008519    0.01074    0.01608   0.02%
+PeleLMeX::velocityProjection()                      23    0.01113    0.01226    0.01505   0.02%
+MLNodeLaplacian::compRHS()                          25   0.005927   0.006431    0.01133   0.01%
+MLNodeLaplacian::FillBoundaryCoeff()               250  0.0003289  0.0008468   0.008749   0.01%
+MLLinOp::defineGrids()                              34   0.004576   0.005942   0.008216   0.01%
+PeleLMeX::Evolve()                                   1   0.004212   0.008152     0.0082   0.01%
+NodalProjector::project                             25   0.006471   0.006885   0.007664   0.01%
+MLMG::apply()                                      491    0.00438     0.0052   0.006956   0.01%
+PeleLMeX::addChiIncrement()                         46   0.005705   0.005949   0.006643   0.01%
+MLNodeLaplacian::averageDownCoeffs()                25   0.002818   0.003517    0.00643   0.01%
+MLMG::actualBottomSolve()                         2527  0.0005533  0.0007187   0.005673   0.01%
+MLMG::mgVcycle_down::1                            2527   0.003228   0.003936   0.005552   0.01%
+MLMG::mgVcycle_down::2                            2527   0.002367   0.003522   0.005552   0.01%
+MLMG::mgVcycle_down::3                            2527   0.001619   0.002532   0.005285   0.01%
+MLMG::mgVcycle_down::0                            2527   0.002926   0.003582   0.005053   0.01%
+MLMG::mgVcycle_down::4                            2527   0.001573   0.002053   0.004578   0.01%
+PeleLMeX::diffuseVelocity()                         23   0.003259   0.003595   0.004441   0.01%
+MLMG::oneIter()                                   2527   0.002398   0.002954   0.004172   0.00%
+FAbArray::OverrideSync()                          5187    0.00216   0.002757   0.004116   0.00%
+MLMG::mgVcycle_down::5                            2527   0.001561   0.001968   0.004034   0.00%
+MLMG::mgVcycle_up::2                              2527   0.001122   0.001738   0.003891   0.00%
+MLMG::mgVcycle_up::0                              2527   0.002461   0.002938   0.003788   0.00%
+MLMG::mgVcycle_up::1                              2527   0.001876   0.002633   0.003736   0.00%
+MLMG::mgVcycle_down::6                            2527   0.001499   0.001868   0.003362   0.00%
+MLCellLinOp::solutionResidual()                   3000   0.002051   0.002525   0.003353   0.00%
+MLMG::mgVcycle_down::8                            2527   0.001541   0.001886   0.003304   0.00%
+MLMG::mgVcycle_down::7                            2527   0.001491   0.001847   0.003237   0.00%
+MLMG::mgVcycle_up::3                              2527   0.001093   0.001218   0.003229   0.00%
+OverrideSync_nowait()                             5187   0.001521   0.001949   0.002986   0.00%
+MLMG::mgVcycle_up::8                              2527   0.001443   0.001725   0.002952   0.00%
+PeleLMeX::calc_dPdt()                               46   0.002479   0.002594   0.002926   0.00%
+OverrideSync_finish()                             5187   0.001437   0.001876   0.002793   0.00%
+MLMG::mgVcycle_up::4                              2527   0.001171   0.001314   0.002737   0.00%
+MLABecLaplacian::averageDownCoeffs()               746   0.001444   0.001805   0.002617   0.00%
+PeleLMeX::initialProjection()                        2   0.002235   0.002352   0.002587   0.00%
+MLMG::mgVcycle_up::6                              2527   0.001133   0.001333    0.00248   0.00%
+MLMG::mgVcycle_up::7                              2527    0.00112   0.001305   0.002417   0.00%
+MLMG::mgVcycle_up::5                              2527   0.001023   0.001138   0.002232   0.00%
+PeleLMeX::computeDivTau()                           92   0.001374   0.001691   0.002224   0.00%
+DiffusionOp::computeGradient()                      71   0.001248   0.001521   0.002156   0.00%
+MLMG::computeMLResidual()                          280   0.001679   0.001764   0.002037   0.00%
+MLMG::mgVcycle_bottom                             2527   0.001179   0.001381   0.001965   0.00%
+PeleLMeX::computeDifferentialDiffusionTerms()       71   0.001137    0.00129   0.001808   0.00%
+PeleLMeX::advance::setup                            46   0.001162   0.001328   0.001743   0.00%
+MLMG::getFluxes()                                 1262   0.001109   0.001293   0.001601   0.00%
+MLNodeLaplacian::define()                           25  0.0006791  0.0008606   0.001371   0.00%
+PeleLMeX::initData()                                 1  0.0002068  0.0002632  0.0009873   0.00%
+MLABecLaplacian::prepareForSolve()                 701  0.0006211  0.0007375  0.0009763   0.00%
+DistributionMapping::SFCProcessorMapDoIt()           2  0.0005754  0.0006426  0.0009056   0.00%
+PeleLMeX::fillPatchState()                         140  0.0003584  0.0004234  0.0006663   0.00%
+PeleLMeX::fillPatchReact()                          50  0.0002432  0.0003012  0.0004753   0.00%
+PeleLMeX::fillPatchTemp()                          140  0.0001414  0.0001841  0.0002938   0.00%
+FabArray::EnforcePeriodicity                       185  0.0001009   0.000144  0.0002492   0.00%
+PeleLMeX::fillPatchStateLev()                       70  0.0001297  0.0001526  0.0001978   0.00%
+PeleLMeX::fillPatchSpecies()                        92  0.0001023  0.0001304  0.0001923   0.00%
+PeleLMeX::advanceChemistry()                        46  6.094e-05   7.67e-05   0.000103   0.00%
+MLNodeLaplacian::prepareForSolve()                  25  4.872e-05  6.056e-05  7.332e-05   0.00%
+NodalProjector::computeRHS                          25   2.74e-05   3.58e-05  7.092e-05   0.00%
+AmrMesh::MakeDistributionMap()                       1  2.559e-05  3.353e-05  6.438e-05   0.00%
+PeleLMeX::createMACRHS()                            46   4.11e-05  4.941e-05  6.121e-05   0.00%
+MLLinOp::define()                                   34  2.902e-05  3.513e-05  5.773e-05   0.00%
+PeleLMeX::initialIterations()                        1  7.754e-06  1.057e-05  2.627e-05   0.00%
+Other                                            56294     0.2554     0.2953     0.4503   0.52%
+-----------------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------------
+Name                                            NCalls  Incl. Min  Incl. Avg  Incl. Max   Max %
+-----------------------------------------------------------------------------------------------
+PeleLMeX::main()                                     1      86.29      86.29      86.31 100.00%
+PeleLMeX::Advance()                                 23      81.55      81.63       81.8  94.78%
+PeleLMeX::oneSDC()                                  46      68.57      69.04       71.1  82.38%
+PeleLMeX::Evolve()                                   1       68.1       68.1       68.1  78.90%
+MLMG::solve()                                      280      61.51      61.78      61.93  71.76%
+MLMG::oneIter()                                   2527      45.67      46.94      47.88  55.47%
+MLMG::mgVcycle()                                  2527      45.47       46.7      47.64  55.19%
+FabArray::FillBoundary()                        113567      18.65      24.96      35.76  41.43%
+PeleLMeX::advance::mac                              69      34.37      34.42      34.66  40.16%
+PeleLMeX::macProject()                              46      33.64      33.67      33.71  39.05%
+MLMG::mgVcycle_up::1                              2527      3.796      17.87      32.42  37.56%
+FabArray::ParallelCopy()                         48474      5.888      25.77      30.45  35.28%
+FabArray::ParallelCopy_finish()                  48474      3.988      25.38      30.23  35.02%
+MLCellLinOp::applyBC()                          124614      16.34       20.6      30.12  34.89%
+FillBoundary_finish()                           118801      12.57      19.12      28.83  33.41%
+MLMG::addInterpCorrection()                      22743      2.287      23.31      28.52  33.04%
+MLCellLinOp::smooth()                            50346      11.66      15.58      27.67  32.06%
+PeleLMeX::advance::diffusion                        69      25.37      25.46      25.56  29.61%
+PeleLMeX::differentialDiffusionUpdate()             46      23.99      24.24      24.36  28.23%
+MLMG::mgVcycle_up::2                              2527    0.03131      9.547      22.51  26.08%
+DiffusionOp::diffuse_scalar()                      186      21.66       21.9      22.07  25.57%
+PeleLMeX::Init()                                     1      16.35      17.61      18.07  20.93%
+PeleLMeX::initData()                                 1      16.35      17.61      18.07  20.93%
+PeleLMeX::initialIterations()                        1      14.26      14.26      14.26  16.52%
+MLMG::mgVcycle_up::3                              2527     0.0266     0.7929      13.87  16.07%
+FillBoundary_nowait()                           118801      3.745      6.648       11.9  13.79%
+MLMG::ResNormInf()                                2807      8.316       9.34       10.9  12.63%
+MLCellLinOp::apply()                             23291      5.404      7.349       9.98  11.56%
+MLMG::mgVcycle_up::4                              2527    0.02621    0.09351      9.487  10.99%
+FillPatchSingleLevel                              1043      1.535      4.759      8.936  10.35%
+PeleLMeX::advanceChemistry_Lev0()                   47      3.265      3.973      8.558   9.92%
+Pele::ReactorCvode::react()                        188      3.144      3.774      8.322   9.64%
+Pele::ReactorCvode::react():CVode                  188      2.768      3.373      7.894   9.15%
+PeleLMeX::advance::reactions                        46      3.259      4.194      7.791   9.03%
+PeleLMeX::computeDifferentialDiffusionTerms()       71      2.557      4.813      7.781   9.02%
+MLCellLinOp::solutionResidual()                   3000      2.552       4.28      7.753   8.98%
+PeleLMeX::advance::velocity                         23      7.523      7.567      7.706   8.93%
+PeleLMeX::computeDifferentialDiffusionFluxes()      71       2.38      4.636      7.604   8.81%
+PeleLMeX::advanceChemistry()                        46      3.188      3.753       7.18   8.32%
+MLMG::mgVcycle_down::2                            2527    0.05197      2.598      6.941   8.04%
+MLMG:computeResOfCorrection()                    22743      2.636      4.024      6.812   7.89%
+MLMG::mgVcycle_down::1                            2527      4.336      5.649      6.725   7.79%
+MLCellLinOp::correctionResidual()                20286      2.384      3.647       6.23   7.22%
+NodalProjector::project                             25      6.101      6.105      6.106   7.07%
+PeleLMeX::fillPatchState()                         140     0.6559       3.59      5.968   6.91%
+DiffusionOp::computeDiffFluxes()                   328      1.598      3.103      5.953   6.90%
+PeleLMeX::velocityProjection()                      23      5.844      5.845      5.847   6.77%
+MLMG::mgVcycle_up::0                              2527      4.444      5.093      5.762   6.68%
+MLMG::apply()                                      491     0.8005      2.167       5.67   6.57%
+MLMG::getFluxes()                                 1262      1.036      2.159      5.656   6.55%
+MLCellLinOp::compFlux()                            631      0.847      1.974      5.466   6.33%
+PeleLMeX::fillPatchStateLev()                       70     0.3659      3.184      5.419   6.28%
+FabArray::EnforcePeriodicity                       185  0.0003016     0.4487      5.015   5.81%
+MLMG::mgVcycle_down::3                            2527     0.0377     0.2875      4.834   5.60%
+PeleLMeX::calcDivU()                                48      1.602      3.311      4.818   5.58%
+MLABecLaplacian::Fsmooth()                      100692      2.577      2.782      4.763   5.52%
+MLMG::mgVcycle_down::0                            2527       3.96      4.396      4.728   5.48%
+Pele::ReactorCvode::cF_RHS()                      1285      1.696      2.017       4.22   4.89%
+amrex::average_down                              22167     0.7442      2.247      3.982   4.61%
+DiffusionOp::computeGradient()                      71      0.126     0.9557      3.606   4.18%
+PeleLMeX::advance::scalars_adv                      46      2.371      2.453      2.506   2.90%
+MLMG::computeResidual()                           2527      1.651      2.021      2.465   2.86%
+MLMG::mgVcycle_bottom                             2527   0.001795   0.004263      2.223   2.58%
+MLMG::actualBottomSolve()                         2527  0.0005533   0.002882      2.221   2.57%
+MLCGSolver::bicgstab                                 2          0    0.00213      2.181   2.53%
+MLMG::prepareForSolve()                            280     0.6332      1.206       2.01   2.33%
+MLNodeLinOp::applyBC()                            7670     0.7622      1.097       1.95   2.26%
+FabArray::ParallelCopy_nowait()                  48474     0.1831     0.3614      1.859   2.15%
+PeleLMeX::Setup()                                    1     0.1276     0.5862      1.843   2.13%
+FabArray::norminf()                               3444      1.211      1.348      1.787   2.07%
+MLMG::mgVcycle_down::4                            2527    0.03608    0.05774      1.785   2.07%
+DistributionMapping::SFCProcessorMapDoIt()           2    0.01457      1.271       1.73   2.00%
+DistributionMapping::LeastUsedCPUs()                 2    0.01378      1.271       1.73   2.00%
+AmrMesh::MakeDistributionMap()                       1   0.001552      1.258      1.716   1.99%
+MLABecLaplacian::averageDownCoeffs()               746     0.3546     0.9192      1.591   1.84%
+MLABecLaplacian::prepareForSolve()                 701       0.42     0.9615      1.586   1.84%
+MLABecLaplacian::Fapply()                        23291     0.8539     0.8905      1.367   1.58%
+PeleLMeX::diffuseVelocity()                         23      1.199      1.241      1.295   1.50%
+average_down_faces                               13005     0.2638     0.6544      1.278   1.48%
+MLNodeLaplacian::Fsmooth()                        4914     0.5197      0.719      1.185   1.37%
+MLNodeLaplacian::restriction()                    2457     0.2845     0.5322      1.131   1.31%
+MLMG::computeMLResidual()                          280     0.2666     0.4726      1.064   1.23%
+PeleLMeX::calcDiffusivity()                         71     0.9459     0.9559     0.9606   1.11%
+MLMG::mgVcycle_down::5                            2527    0.03556    0.04418     0.8914   1.03%
+MLMG::mgVcycle_down::7                            2527    0.03498    0.04312     0.8655   1.00%
+MLMG::mgVcycle_down::6                            2527    0.03543    0.04367     0.8519   0.99%
+MLMG::mgVcycle_down::8                            2527    0.03503    0.04242     0.8429   0.98%
+FabArray::setVal()                               37063     0.3587     0.4039     0.8333   0.97%
+PeleLMeX::advance::setup                            46     0.6992     0.7582     0.8315   0.96%
+PeleLMeX::computeSpeciesEnthalpyFlux()             257     0.7638     0.8007      0.827   0.96%
+PeleLMeX::initialProjection()                        2     0.4473     0.4688     0.7768   0.90%
+PeleLMeX::getDiffusivity()                        1003     0.6667     0.7059     0.7571   0.88%
+FabArray::Xpay()                                 26090     0.4381     0.4687     0.7412   0.86%
+FAbArray::OverrideSync()                          5187     0.2608     0.4349     0.7131   0.83%
+PhysBCFunct::()                                   1065   0.003553    0.06311     0.6692   0.78%
+MLMG::mgVcycle_up::8                              2527    0.02896    0.03416      0.666   0.77%
+PeleLMeX::derive()                                  70     0.4013     0.5605     0.6583   0.76%
+MLMG::mgVcycle_up::7                              2527    0.02633    0.03104     0.6492   0.75%
+MLMG::mgVcycle_up::5                              2527    0.02574    0.02875     0.6488   0.75%
+MLMG::mgVcycle_up::6                              2527    0.02594    0.02978     0.6389   0.74%
+amrex::Copy()                                    10935     0.4437     0.4594     0.6182   0.72%
+PeleLMeX::doDiagnostics()                           20     0.3898     0.5363     0.6144   0.71%
+PeleLMeX::MLNorm0()                                 50     0.1332      0.205     0.5784   0.67%
+MLTensorOp::apply()                                365     0.2584     0.3872      0.571   0.66%
+OverrideSync_finish()                             5187     0.1135     0.2799     0.5313   0.62%
+PeleLMeX::predictVelocity()                         46     0.2943     0.4325     0.5055   0.59%
+amrex::Dot()                                        13          0  0.0004632     0.4743   0.55%
+PeleLMeX::computeDivTau()                           92     0.2394      0.345     0.4671   0.54%
+PeleLMeX::getVelForces()                            92     0.2127       0.31     0.4585   0.53%
+PeleLMeX::fillPatchSpecies()                        92     0.2813     0.3429     0.3937   0.46%
+MLCGSolver::ParallelAllReduce                       20          0  0.0003707     0.3796   0.44%
+OverrideSync_nowait()                             5187    0.08007     0.1522     0.3198   0.37%
+PeleLMeX::addChiIncrement()                         46     0.1903      0.237      0.315   0.36%
+PeleLMeX::fillPatchReact()                          50    0.05533     0.1332     0.3149   0.36%
+PeleLMeX::computeDt()                               25     0.1128     0.1979     0.3022   0.35%
+PeleLMeX::adjustSpeciesFluxes()                    117     0.2856     0.2944     0.2993   0.35%
+PeleLMeX::fluxDivergence()                         372      0.251     0.2604     0.2674   0.31%
+FabArray::mult()                                  2103     0.2356     0.2483     0.2624   0.30%
+MLNodeLaplacian::interpolation()                  2457     0.1105     0.1243     0.2473   0.29%
+FabArray::Saxpy()                                   61   0.001929   0.002234     0.2451   0.28%
+amrex::Add()                                      2858     0.1762     0.1822      0.193   0.22%
+PeleLMeX::computeInstantaneousReactionRate()        46     0.1785     0.1833     0.1861   0.22%
+MLABecLaplacian::normalize()                         7          0  0.0001621      0.166   0.19%
+MLLinOp::define()                                   34     0.1149     0.1507     0.1655   0.19%
+MLLinOp::defineGrids()                              34     0.1148     0.1506     0.1655   0.19%
+PeleLMeX::MFSum()                                   40    0.08376     0.1452     0.1648   0.19%
+MLLinOp::makeSubCommunicator()                      29     0.1035     0.1398      0.156   0.18%
+MLNodeLaplacian::Fapply()                         2756    0.06981    0.07624     0.1426   0.17%
+MLNodeLaplacian::define()                           25    0.09214     0.1285     0.1418   0.16%
+MLCellLinOp::prepareForSolve()                     701    0.07675    0.09685     0.1415   0.16%
+PeleLMeX::createMACRHS()                            46    0.01649    0.05468     0.1303   0.15%
+PeleLMeX::calc_dPdt()                               46    0.01608    0.04174      0.108   0.13%
+MLNodeLaplacian::prepareForSolve()                  25    0.03366    0.06887     0.1034   0.12%
+MLNodeLaplacian::averageDownCoeffs()                25     0.0336    0.06881     0.1033   0.12%
+PeleLMeX::fillPatchTemp()                          140    0.04785    0.06386     0.1013   0.12%
+MLCellLinOp::setLevelBC()                          701     0.0212    0.03138    0.09076   0.11%
+NodalProjector::computeRHS                          25    0.04831    0.05668    0.08255   0.10%
+MLNodeLaplacian::compRHS()                          25    0.04828    0.05665    0.08251   0.10%
+MLNodeLaplacian::FillBoundaryCoeff()               250    0.01526    0.04714    0.08119   0.09%
+FabArrayBase::getFB()                           119051    0.03127    0.04252    0.07233   0.08%
+Other                                            56294     0.4564      0.558     0.8165   0.95%
+-----------------------------------------------------------------------------------------------
+
+Unused ParmParse Variables:
+  [TOP]::amr.ref_ratio(nvals = 4)  :: [2, 2, 2, 2]
+  [TOP]::amr.regrid_int(nvals = 1)  :: [5]
+  [TOP]::diffusion.num_post_smooth(nvals = 1)  :: [1]
+  [TOP]::diffusion.num_pre_smooth(nvals = 1)  :: [1]
+  [TOP]::peleLM.mu(nvals = 1)  :: [0.0]
+  [TOP]::peleLM.rho(nvals = 1)  :: [1.17]
+
+Device Memory Usage:
+--------------------------------------------------------------------------------------------------------------------------------------------
+Name                                               Nalloc      Nfree  AvgMem min  AvgMem avg  AvgMem max  MaxMem min  MaxMem avg  MaxMem max
+--------------------------------------------------------------------------------------------------------------------------------------------
+The_Arena::Initialize()                              1024       1024     140 KiB     154 KiB     580 KiB      55 GiB      55 GiB      55 GiB
+PeleLMeX::advance::scalars_adv                    2403328    2403328      58 MiB      60 MiB      61 MiB    3709 MiB    3709 MiB    3709 MiB
+MLABecLaplacian::define()                          222416     222416    1881 MiB    1896 MiB    1963 MiB    1935 MiB    1947 MiB    2023 MiB
+PeleLMeX::advance::setup                          1318912    1318912    1656 MiB    1661 MiB    1662 MiB    1762 MiB    1762 MiB    1762 MiB
+PeleLMeX::MakeNewLevelFromScratch()                 61440      61440    1473 MiB    1478 MiB    1479 MiB    1512 MiB    1512 MiB    1512 MiB
+MLMG::prepareForSolve()                           9334225    9334225     112 MiB     113 MiB     118 MiB    1010 MiB    1024 MiB    1111 MiB
+PeleLMeX::getVelForces()                           942080     942080     485 MiB     487 MiB     487 MiB    1091 MiB    1091 MiB    1091 MiB
+PeleLMeX::computeDifferentialDiffusionFluxes()    2035712    2035712    5614 KiB      10 MiB      26 MiB    1032 MiB    1032 MiB    1032 MiB
+Pele::ReactorCvode::react()                       6160384    6160384      34 MiB      41 MiB      93 MiB    1019 MiB    1019 MiB    1019 MiB
+PeleLMeX::differentialDiffusionUpdate()           1130496    1130496     160 MiB     162 MiB     163 MiB     585 MiB     585 MiB     585 MiB
+PeleLMeX::advance::velocity                       1271808    1271808     889 KiB     959 KiB    1072 KiB     573 MiB     573 MiB     573 MiB
+PeleLMeX::computeDifferentialDiffusionTerms()      872448     872448      16 MiB      31 MiB      50 MiB     560 MiB     560 MiB     560 MiB
+PeleLMeX::getDiffusivity()                       12324864   12324864      18 MiB      19 MiB      19 MiB     511 MiB     511 MiB     511 MiB
+MLCellLinOp::compFlux()                           7753728    7753728    2058 KiB    2155 KiB    2281 KiB     511 MiB     511 MiB     511 MiB
+DiffusionOp::computeDiffFluxes()                  2686976    2686976    4290 KiB    8900 KiB      20 MiB     368 MiB     368 MiB     368 MiB
+PeleLMeX::fillPatchState()                         286720     286720    1364 KiB    1901 KiB    2250 KiB     293 MiB     293 MiB     293 MiB
+Pele::ReactorCvode::react():CVode                 2482176    2482176    9081 KiB      10 MiB      24 MiB     264 MiB     264 MiB     264 MiB
+PeleLMeX::initData()                                13312      13312    2865 KiB    3561 KiB    3657 KiB     201 MiB     201 MiB     201 MiB
+PeleLMeX::derive()                                 368640     368640     125 KiB     144 KiB     163 KiB     193 MiB     193 MiB     193 MiB
+DiffusionOp::diffuse_scalar()                      761856     761856      12 MiB      13 MiB      13 MiB     184 MiB     184 MiB     184 MiB
+PeleLMeX::fillPatchReact()                         204800     204800     162 KiB     331 KiB     728 KiB     184 MiB     184 MiB     184 MiB
+PeleLMeX::computeSpeciesEnthalpyFlux()            1052672    1052672    1662 KiB    1746 KiB    1804 KiB     184 MiB     184 MiB     184 MiB
+PeleLMeX::calcDivU()                               196608     196608     457 KiB     468 KiB     474 KiB     168 MiB     168 MiB     168 MiB
+MLMG::apply()                                     2011136    2011136     767 KiB    2029 KiB    8210 KiB     168 MiB     168 MiB     168 MiB
+PeleLMeX::predictVelocity()                        612352     612352     286 KiB     370 KiB     416 KiB     135 MiB     135 MiB     135 MiB
+MLTensorOp::apply()                               2027520    2027520      29 KiB      36 KiB      43 KiB      54 MiB      56 MiB      73 MiB
+MLCellLinOp::defineAuxData()                       667248     667248      61 MiB      62 MiB      67 MiB      63 MiB      64 MiB      69 MiB
+BndryData::define()                                442368     442368      65 MiB      65 MiB      65 MiB      67 MiB      67 MiB      67 MiB
+PeleLMeX::initialProjection()                       43008      43008     303 KiB     305 KiB     305 KiB      58 MiB      58 MiB      58 MiB
+PeleLMeX::velocityProjection()                     670720     670720    3996 KiB    4018 KiB    4027 KiB      58 MiB      58 MiB      58 MiB
+PeleLMeX::macProject()                              24576      24576      46 MiB      46 MiB      46 MiB      49 MiB      49 MiB      49 MiB
+MLTensorOp::define()                                24576      24576      46 MiB      46 MiB      46 MiB      48 MiB      48 MiB      48 MiB
+ResizeRandomSeed                                     1024       1024      41 MiB      41 MiB      41 MiB      41 MiB      41 MiB      41 MiB
+PeleLMeX::doDiagnostics()                          106496     106496     121 KiB     167 KiB     191 KiB      38 MiB      38 MiB      38 MiB
+PeleLMeX::diffuseVelocity()                        188416     188416     480 KiB     495 KiB     517 KiB      34 MiB      34 MiB      34 MiB
+PeleLMeX::computeDivTau()                          376832     376832      71 KiB     105 KiB     142 KiB      26 MiB      26 MiB      26 MiB
+DiffusionOp::computeGradient()                     872448     872448      36 KiB     295 KiB    1121 KiB      26 MiB      26 MiB      26 MiB
+PeleLMeX::computeDt()                              256000     256000    3942   B    4040   B    4254   B      26 MiB      26 MiB      26 MiB
+MLNodeLaplacian::compRHS()                         204800     204800    2412   B    2884   B    5096   B      17 MiB      17 MiB      17 MiB
+MLNodeLaplacian::define()                          321925     321925     977 KiB     984 KiB    1016 KiB      13 MiB      13 MiB      14 MiB
+MLCellLinOp::setLevelBC()                            4096       4096       8   B      10   B      26   B    8984 KiB    8984 KiB    8984 KiB
+PeleLMeX::addChiIncrement()                        188416     188416      19 KiB      24 KiB      32 KiB    8984 KiB    8984 KiB    8984 KiB
+PeleLMeX::MFSum()                                  244736     244736     464   B     491   B     550   B    8413 KiB    8413 KiB    8413 KiB
+PeleLMeX::resetCoveredMask()                         4096       4096     132   B     136   B     140   B    8192 KiB    8192 KiB    8192 KiB
+PeleLMeX::fluxDivergence()                        1523712    1523712      23 KiB      24 KiB      25 KiB    8192 KiB    8192 KiB    8192 KiB
+MLNodeLinOp::buildMasks()                          219550     219550     365   B     840   B     978   B    4492 KiB    4492 KiB    4492 KiB
+OwnerMask()                                        128050     128050     302 KiB     303 KiB     303 KiB    4291 KiB    4295 KiB    4296 KiB
+PeleLMeX::advanceChemistry_Lev0()                  192512     192512     154 KiB     188 KiB     405 KiB    4096 KiB    4096 KiB    4096 KiB
+average_down_faces                                4385052    4385052      10 KiB      15 KiB      21 KiB    2864 KiB    2864 KiB    2864 KiB
+amrex::average_down                              14062900   14062900    3282   B    6285   B       9 KiB    2690 KiB    2690 KiB    2690 KiB
+MLMG::addInterpCorrection()                      14144564   14144564    1947   B      49 KiB      83 KiB    2688 KiB    2688 KiB    2688 KiB
+MLNodeLaplacian::averageDownCoeffs()               234225     234225      85 KiB      98 KiB     175 KiB    1356 KiB    1531 KiB    2640 KiB
+PeleLMeX::initLevelData()                            5120       5120     507   B     509   B     512   B    2048 KiB    2048 KiB    2048 KiB
+FabArray::norminf()                               3556914    3556914     424   B     435   B    1185   B     220 KiB     220 KiB     220 KiB
+MultiFab::min()                                    209920     209920      20   B      20   B      21   B     220 KiB     220 KiB     220 KiB
+MultiFab::max()                                    209920     209920      29   B      30   B      32   B     220 KiB     220 KiB     220 KiB
+amrex::Dot()                                        18814      18814       0   B       1   B    1047   B       0   B     220   B     220 KiB
+MLNodeLaplacian::restriction()                    1719832    1719832     380   B     642   B    1006   B     154 KiB     154 KiB     154 KiB
+MLABecLaplacian::Fsmooth()                         382896     382896      44 KiB      49 KiB      98 KiB      48 KiB      52 KiB     107 KiB
+MLCellLinOp::applyBC()                          166762224  166762224     109   B     122   B     232   B      95 KiB      95 KiB      95 KiB
+MLCellLinOp::prepareForSolve()                    1056554    1056554      34   B      43   B      46   B      79 KiB      79 KiB      79 KiB
+MLCellLinOp::defineBC()                             15668      15668      36 KiB      37 KiB      54 KiB      37 KiB      38 KiB      56 KiB
+FillBoundary_finish()                            38697365   38697365      77   B     145   B     187   B      19 KiB      31 KiB      33 KiB
+FillBoundary_nowait()                            70026616   70026616      89   B     155   B     196   B      19 KiB      31 KiB      33 KiB
+FabArray::setVal()                                3366912    3366912      21 KiB      21 KiB      21 KiB      28 KiB      28 KiB      28 KiB
+MLCGSolver::bicgstab                                13875      13875       0   B       0   B      47   B       0   B      24   B      24 KiB
+amrex::Copy()                                     3261440    3261440      16 KiB      16 KiB      16 KiB      19 KiB      19 KiB      19 KiB
+PeleLMeX::Setup()                                    5120       4096      18 KiB      18 KiB      18 KiB      18 KiB      18 KiB      18 KiB
+FabArray::ParallelCopy_finish()                   6157251    6157251       1   B       2   B       8   B    9648   B      14 KiB      15 KiB
+FabArray::ParallelCopy_nowait()                   7293459    7293459       2   B       3   B       8   B    9648   B      14 KiB      15 KiB
+FabArray::setVal(val, thecmd, scomp, ncomp)        353013     353013       0   B       0   B       0   B    5616   B    8766   B    9216   B
+MLNodeLaplacian::Fsmooth()                          58800      58800       0   B      19   B     233   B       0   B     294   B    3584   B
+amrex::Add()                                       172032     172032    2648   B    2656   B    2658   B    3584   B    3584   B    3584   B
+MLABecLaplacian::Fapply()                         1205923    1205923     622   B     717   B    1640   B    1536   B    1610   B    3072   B
+PhysBCFunct::()                                    540160     540160       0   B       0   B      12   B       0   B     336   B    2688   B
+MLABecLaplacian::normalize()                         2270       2270       0   B       1   B    1907   B       0   B       2   B    2176   B
+MLNodeLaplacian::Fapply()                           41169      41169      35   B      39   B     111   B     512   B     586   B    2048   B
+FabArray::invert()                                 141312     141312     595   B     597   B     599   B    1536   B    1536   B    1536   B
+FabArray::mult()                                  1579008    1579008       2   B       2   B       2   B    1536   B    1536   B    1536   B
+PeleLMeX::calcDiffusivity()                          2048       2048     984   B     987   B     988   B    1024   B    1024   B    1024   B
+FabArray::BuildMask()                               52224      52224     311   B     311   B     312   B     832   B     832   B     832   B
+PeleLMeX::calc_dPdt()                               47104      47104       1   B       1   B       1   B     512   B     512   B     512   B
+PeleLMeX::calcViscosity()                            1024       1024     486   B     487   B     488   B     512   B     512   B     512   B
+MLNodeLaplacian::interpolation()                   440076     440076       0   B       0   B       0   B     512   B     512   B     512   B
+MLCGSolver::ParallelAllReduce                        1364       1364       0   B       0   B       0   B       0   B       0   B     224   B
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+Managed Memory Usage:
+----------------------------------------------------------------------------------------------------------------------
+Name                             Nalloc  Nfree  AvgMem min  AvgMem avg  AvgMem max  MaxMem min  MaxMem avg  MaxMem max
+----------------------------------------------------------------------------------------------------------------------
+The_Managed_Arena::Initialize()    1024   1024     123   B     134   B     180   B    8192 KiB    8192 KiB    8192 KiB
+----------------------------------------------------------------------------------------------------------------------
+
+Pinned Memory Usage:
+---------------------------------------------------------------------------------------------------------------------------------------
+Name                                           Nalloc     Nfree  AvgMem min  AvgMem avg  AvgMem max  MaxMem min  MaxMem avg  MaxMem max
+---------------------------------------------------------------------------------------------------------------------------------------
+The_Pinned_Arena::Initialize()                   1024      1024     114   B     124   B     158   B    8192 KiB    8192 KiB    8192 KiB
+Pele::ReactorCvode::react():CVode              663552    663552    6105   B      11 KiB      53 KiB     264 KiB     352 KiB     968 KiB
+PeleLMeX::Setup()                                2048         0     391 KiB     397 KiB     399 KiB     400 KiB     400 KiB     400 KiB
+MLABecLaplacian::Fsmooth()                     382896    382896      44 KiB      49 KiB      98 KiB      48 KiB      52 KiB     107 KiB
+MLCellLinOp::applyBC()                       39156932  39156932     109   B     122   B     232   B      95 KiB      95 KiB      95 KiB
+MLCellLinOp::prepareForSolve()                1056554   1056554      34   B      43   B      46   B      79 KiB      79 KiB      79 KiB
+Pele::ReactorCvode::react()                    192512    192512      70   B      76   B      80   B      44 KiB      44 KiB      44 KiB
+FillBoundary_finish()                        38697365  38697365      78   B     146   B     188   B      19 KiB      31 KiB      33 KiB
+FillBoundary_nowait()                        70026616  70026616      90   B     156   B     197   B      19 KiB      31 KiB      33 KiB
+FabArray::setVal()                            3366912   3366912      21 KiB      21 KiB      21 KiB      28 KiB      28 KiB      28 KiB
+amrex::Copy()                                 3261440   3261440      16 KiB      16 KiB      16 KiB      19 KiB      19 KiB      19 KiB
+FabArray::ParallelCopy_finish()               6157251   6157251       1   B       2   B       8   B    9648   B      14 KiB      15 KiB
+FabArray::ParallelCopy_nowait()               7293459   7293459       2   B       3   B       8   B    9648   B      14 KiB      15 KiB
+FabArray::setVal(val, thecmd, scomp, ncomp)    353013    353013       0   B       0   B       0   B    5616   B    8766   B    9216   B
+average_down_faces                             801792    801792    7540   B    7566   B    7573   B    8576   B    8576   B    8576   B
+MLCellLinOp::setLevelBC()                     1056554   1056554       0   B       0   B       0   B    8064   B    8064   B    8064   B
+OwnerMask()                                     25625     25625       0   B       0   B       0   B     816   B    4988   B    6016   B
+MLNodeLaplacian::Fsmooth()                      58800     58800       0   B      19   B     233   B       0   B     294   B    3584   B
+amrex::Add()                                   172032    172032    2648   B    2656   B    2658   B    3584   B    3584   B    3584   B
+MLABecLaplacian::Fapply()                     1205923   1205923     622   B     717   B    1640   B    1536   B    1610   B    3072   B
+PhysBCFunct::()                                540160    540160       0   B       0   B      12   B       0   B     336   B    2688   B
+PeleLMeX::initialProjection()                    2048      2048       0   B       0   B       0   B    2416   B    2416   B    2416   B
+PeleLMeX::predictVelocity()                    141312    141312       0   B       0   B       0   B    2416   B    2416   B    2416   B
+PeleLMeX::velocityProjection()                  23552     23552       0   B       0   B       0   B    2416   B    2416   B    2416   B
+MLMG::prepareForSolve()                         23552     23552       0   B       0   B       0   B    2416   B    2416   B    2416   B
+amrex::average_down                           2526208   2526208    1727   B    1738   B    1747   B    2368   B    2368   B    2368   B
+MLABecLaplacian::normalize()                     2270      2270       0   B       1   B    1907   B       0   B       2   B    2176   B
+PeleLMeX::advance::scalars_adv                 189440    189440     372   B     372   B     373   B    2064   B    2064   B    2064   B
+MLNodeLaplacian::Fapply()                       41169     41169      35   B      39   B     111   B     512   B     586   B    2048   B
+FabArray::mult()                              1579008   1579008       2   B       2   B       2   B    1536   B    1536   B    1536   B
+FabArray::invert()                             141312    141312     595   B     597   B     599   B    1536   B    1536   B    1536   B
+PeleLMeX::MFSum()                               80896     80896       1   B       1   B       1   B    1040   B    1040   B    1040   B
+PeleLMeX::calcDiffusivity()                      2048      2048     984   B     987   B     988   B    1024   B    1024   B    1024   B
+FabArray::BuildMask()                           52224     52224     311   B     311   B     312   B     832   B     832   B     832   B
+MLNodeLaplacian::restriction()                 441100    441100     311   B     312   B     314   B     832   B     832   B     832   B
+PeleLMeX::computeDt()                           51200     51200       0   B       0   B       0   B     528   B     528   B     528   B
+FabArray::norminf()                           3556914   3556914       0   B       0   B       2   B     528   B     528   B     528   B
+MultiFab::min()                                209920    209920       0   B       0   B       0   B     528   B     528   B     528   B
+MultiFab::max()                                209920    209920       0   B       0   B       0   B     528   B     528   B     528   B
+PeleLMeX::initLevelData()                        1024      1024     498   B     499   B     500   B     512   B     512   B     512   B
+PeleLMeX::calc_dPdt()                           47104     47104       1   B       1   B       1   B     512   B     512   B     512   B
+PeleLMeX::calcViscosity()                        1024      1024     486   B     487   B     488   B     512   B     512   B     512   B
+MLNodeLaplacian::interpolation()               440076    440076       0   B       0   B       0   B     512   B     512   B     512   B
+MLMG::addInterpCorrection()                   2308096   2308096       0   B       0   B       0   B     512   B     512   B     512   B
+amrex::Dot()                                    18814     18814       0   B       0   B       2   B       0   B       0   B     144   B
+---------------------------------------------------------------------------------------------------------------------------------------
+
+Comms Memory Usage:
+---------------------------------------------------------------------------------------------------------------------------
+Name                               Nalloc     Nfree  AvgMem min  AvgMem avg  AvgMem max  MaxMem min  MaxMem avg  MaxMem max
+---------------------------------------------------------------------------------------------------------------------------
+FillBoundary_nowait()            77394730  77394730     712 KiB    3516 KiB    7310 KiB      70 MiB      92 MiB      95 MiB
+FabArray::ParallelCopy_nowait()  13332993  13332993      40 KiB     104 KiB     164 KiB      16 MiB      21 MiB      21 MiB
+The_Comms_Arena::Initialize()        1024      1024       1   B       1   B       3   B    8192 KiB    8192 KiB    8192 KiB
+---------------------------------------------------------------------------------------------------------------------------
+
+Cpu Memory Usage:
+---------------------------------------------------------------------------------------------------------------------------
+Name                                Nalloc    Nfree  AvgMem min  AvgMem avg  AvgMem max  MaxMem min  MaxMem avg  MaxMem max
+---------------------------------------------------------------------------------------------------------------------------
+Pele::ReactorCvode::react()        4042752  4042752      31 MiB      37 MiB      83 MiB     924 MiB     924 MiB     924 MiB
+Pele::ReactorCvode::react():CVode  1155072  1155072    9073 KiB      10 MiB      24 MiB     264 MiB     264 MiB     264 MiB
+---------------------------------------------------------------------------------------------------------------------------
+
+Total GPU global memory (MB) spread across MPI: [65520 ... 65520]
+Free  GPU global memory (MB) spread across MPI: [7515 ... 7869]
+[The         Arena] space (MB) allocated spread across MPI: [57220 ... 57220]
+[The         Arena] space (MB) used      spread across MPI: [0 ... 0]
+[The Managed Arena] space (MB) allocated spread across MPI: [8 ... 8]
+[The Managed Arena] space (MB) used      spread across MPI: [0 ... 0]
+[The  Pinned Arena] space (MB) allocated spread across MPI: [8 ... 8]
+[The  Pinned Arena] space (MB) used      spread across MPI: [0 ... 0]
+[The   Comms Arena] space (MB) allocated spread across MPI: [78 ... 103]
+[The   Comms Arena] space (MB) used      spread across MPI: [0 ... 0]
+AMReX (21.02-1856-g0b16e7d029c2-dirty) finalized
